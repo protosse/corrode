@@ -1,5 +1,5 @@
-import 'package:corrode/modules/splash/splash_page.dart';
-import 'package:corrode/modules/splash/splash_binding.dart';
+import 'package:corrode/modules/home/home_binding.dart';
+import 'package:corrode/modules/home/home_page.dart';
 import 'package:corrode/routes/app_pages.dart';
 import 'package:corrode/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,8 +21,8 @@ void main() async {
     theme: appThemeData,
     defaultTransition: Transition.native,
     getPages: AppPages.pages,
-    initialBinding: SplashBinding(),
-    home: SplashPage(),
+    initialBinding: HomeBinding(),
+    home: HomePage(),
   ));
 }
 

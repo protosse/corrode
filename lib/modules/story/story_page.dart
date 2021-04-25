@@ -13,7 +13,7 @@ class StoryPage extends StatelessWidget {
 
   StoryPage({@required this.storyType}) {
     controller.storyType = storyType;
-    controller.request();
+    // controller.request();
   }
 
   @override

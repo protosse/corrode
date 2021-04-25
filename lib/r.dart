@@ -1,3 +1,4 @@
 class R {
-  static final String assetsImagesProfile = 'assets/images/3.0x/profile.jpg';
+  static final String assetsImagesProfile =
+      'assets/images/main_search_white.png';
 }

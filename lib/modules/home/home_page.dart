@@ -1,5 +1,6 @@
 import 'package:corrode/modules/home/home_controller.dart';
 import 'package:corrode/modules/story/story_page.dart';
+import 'package:corrode/util/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,15 @@ class HomePage extends GetView<HomeController> {
         builder: (_) {
           return Scaffold(
             appBar: AppBar(
-              title: tabBar(),
+              title: Container(
+                color: Colours.red,
+                child: Column(
+                  children: [
+                    searchView(),
+                    tabBar(),
+                  ],
+                ),
+              ),
             ),
             body: TabBarView(
               controller: controller.tabController,
@@ -21,6 +30,19 @@ class HomePage extends GetView<HomeController> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Container searchView() {
+    return Container(
+      color: Color(0xFFf56165),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+      child: Row(
+        children: [
+          
+        ],
       ),
     );
   }
