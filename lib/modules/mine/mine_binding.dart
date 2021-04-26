@@ -1,5 +1,6 @@
-import 'package:corrode/modules/mine/mine_controller.dart';
 import 'package:get/get.dart';
+
+import 'mine_controller.dart';
 
 class MineBinding implements Bindings {
   @override

@@ -1,35 +1,58 @@
+import 'package:corrode/api/api.dart';
+import 'package:corrode/models/home_category.dart';
+import 'package:corrode/util/loadState/load_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-enum StoryType { top, new_, jobs, show, ask, best }
-
-class Tabs {
-  String name;
-  StoryType type;
-  Tabs(this.name, this.type);
-}
-
-class HomeController extends GetxController with SingleGetTickerProviderMixin {
-  final tabs = [
-    Tabs("Top", StoryType.top),
-    Tabs("New", StoryType.new_),
-    Tabs("Job", StoryType.jobs),
-    Tabs("Show", StoryType.show),
-    Tabs("Ask", StoryType.ask),
-    Tabs("Best", StoryType.best),
-  ];
+class HomeController extends GetxController
+    with SingleGetTickerProviderMixin, LoadState {
+  List<HomeCategory> tabs = [];
 
   TabController tabController;
 
   @override
   void onInit() {
     super.onInit();
-    tabController = TabController(vsync: this, length: tabs.length);
+    request();
   }
 
   @override
   void onClose() {
-    tabController.dispose();
+    if (tabController != null) {
+      tabController.dispose();
+    }
     super.onClose();
+  }
+
+  @override
+  request({bool up = true}) {
+    // Api.share.homeCategory().then((value) {
+    //   tabs = value;
+    //   tabs.insert(0, HomeCategory(cat_id: -1, cat_name: "推荐"));
+    //   isFirstLoad = false;
+    // }).catchError((error) {
+    //   if (isFirstLoad) {
+    //     isFirstLoadError = true;
+    //   }
+    // }).whenComplete(() {
+    //   tabController = TabController(vsync: this, length: tabs.length);
+    //   update();
+    // });
+
+    var home = Api.share.home();
+    var category = Api.share.homeCategory();
+
+    Future.wait([home, category]).then((value) {
+      isFirstLoad = false;
+      tabs = value[1];
+      tabs.insert(0, HomeCategory(cat_id: -1, cat_name: "推荐"));
+    }).catchError((error) {
+      if (isFirstLoad) {
+        isFirstLoadError = true;
+      }
+    }).whenComplete(() {
+      tabController = TabController(vsync: this, length: tabs.length);
+      update();
+    });
   }
 }
