@@ -1,25 +1,31 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'home.g.dart';
 
-enum HomeListStyle {
-  @JsonValue(4)
-  Banner
-}
+part 'home.g.dart';
 
 @JsonSerializable()
 class Home {
+  @JsonKey(name: 'recommend_id')
   int recommendId;
+  @JsonKey(name: 'label')
   String label;
-  HomeListStyle style;
+  @JsonKey(name: 'style')
+  int style;
+  @JsonKey(name: 'type')
+  int type;
+  @JsonKey(name: 'can_more')
   bool canMore;
+  @JsonKey(name: 'can_refresh')
   bool canRefresh;
-  String total;
-  List<HomeList> list;
+  @JsonKey(name: 'total')
+  int total;
+  @JsonKey(name: 'list')
+  List list;
 
   Home({
     this.recommendId,
     this.label,
     this.style,
+    this.type,
     this.canMore,
     this.canRefresh,
     this.total,
@@ -27,26 +33,6 @@ class Home {
   });
 
   factory Home.fromJson(Map<String, dynamic> json) => _$HomeFromJson(json);
+
   Map<String, dynamic> toJson() => _$HomeToJson(this);
-}
-
-@JsonSerializable()
-class HomeList {
-  String image;
-  int action;
-  String content;
-  String color;
-  int isLogin;
-
-  HomeList({
-    this.image,
-    this.action,
-    this.content,
-    this.color,
-    this.isLogin,
-  });
-
-  factory HomeList.fromJson(Map<String, dynamic> json) =>
-      _$HomeListFromJson(json);
-  Map<String, dynamic> toJson() => _$HomeListToJson(this);
 }

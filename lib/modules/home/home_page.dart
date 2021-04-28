@@ -3,6 +3,7 @@ import 'package:corrode/modules/home/home_controller.dart';
 import 'package:corrode/modules/search/search_page.dart';
 import 'package:corrode/util/colors.dart';
 import 'package:corrode/util/loadState/load_state.dart';
+import 'package:corrode/util/loadState/refresh_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,20 +16,23 @@ class HomePage extends GetView<HomeController> {
         return Scaffold(
           body: LoadStateView(
             state: controller,
-            child: Column(
-              children: [
-                Container(
-                  color: Colours.red,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      searchView(),
-                      tabBar(),
-                    ],
+            child: RefreshStateView(
+              state: controller,
+              child: Column(
+                children: [
+                  Container(
+                    color: Colours.red,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        searchView(),
+                        tabBar(),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(child: tabBarView())
-              ],
+                  Expanded(child: tabBarView())
+                ],
+              ),
             ),
           ),
         );
@@ -92,9 +96,9 @@ class HomePage extends GetView<HomeController> {
       indicatorColor: Colors.white,
       indicatorSize: TabBarIndicatorSize.label,
       indicatorWeight: 2.0,
-      tabs: controller.tabs
+      tabs: controller.dataSource
           .map((t) => Tab(
-                text: t.cat_name,
+                text: t.catName,
               ))
           .toList(),
       controller: controller.tabController,
@@ -104,7 +108,7 @@ class HomePage extends GetView<HomeController> {
   Widget tabBarView() {
     return TabBarView(
         controller: controller.tabController,
-        children: controller.tabs.asMap().entries.map((e) {
+        children: controller.dataSource.asMap().entries.map((e) {
           if (e.key == 0) {
             return recommendView();
           } else {

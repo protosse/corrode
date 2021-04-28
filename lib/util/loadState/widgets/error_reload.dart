@@ -10,25 +10,28 @@ class ErrorReload extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: <Widget>[
-          Text(
-            "Woops, something bad happened",
-            style: TextStyle(fontSize: 16),
-          ),
-          Padding(padding: EdgeInsets.only(top: 10)),
-          Text(
-            text,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-          ),
-          CupertinoButton(
-            onPressed: onTap,
-            child: Text('Reload'),
-          )
-        ],
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "Woops, something bad happened",
+              style: TextStyle(fontSize: 16),
+            ),
+            Padding(padding: EdgeInsets.only(top: 10)),
+            Text(
+              text,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+            ),
+            CupertinoButton(
+              onPressed: onTap,
+              child: Text('Reload'),
+            )
+          ],
+        ),
       ),
     );
   }

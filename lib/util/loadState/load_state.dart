@@ -6,9 +6,8 @@ import 'widgets/loading.dart';
 mixin LoadState {
   var isFirstLoad = true;
   var isFirstLoadError = false;
-  var hasMore = false;
 
-  request({bool up = true});
+  request();
 }
 
 class LoadStateView extends StatelessWidget {

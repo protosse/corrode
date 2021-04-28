@@ -1,3 +1,4 @@
+import 'package:corrode/models/book.dart';
 import 'package:corrode/models/home_category.dart';
 import 'package:dio/dio.dart';
 
@@ -45,6 +46,14 @@ class Api {
   Future home() async {
     return await request(url: 'book/like').then((value) {
       return value;
+    });
+  }
+
+  Future<List<Book>> bookList({int page, String catId, int bookStatus}) async {
+    return await request(url: 'book/category-list').then((value) {
+      Map<String, dynamic> data = value.data;
+      List d = data["list"];
+      return d.map((e) => Book.fromJson(e)).toList();
     });
   }
 

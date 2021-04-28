@@ -4,10 +4,12 @@ part 'home_category.g.dart';
 
 @JsonSerializable()
 class HomeCategory {
-  int cat_id;
-  String cat_name;
+  @JsonKey(name: 'cat_id')
+  int catId;
+  @JsonKey(name: 'cat_name')
+  String catName;
 
-  HomeCategory({this.cat_id, this.cat_name});
+  HomeCategory({this.catId, this.catName});
 
   factory HomeCategory.fromJson(Map<String, dynamic> json) =>
       _$HomeCategoryFromJson(json);
