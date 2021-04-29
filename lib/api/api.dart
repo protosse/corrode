@@ -1,4 +1,5 @@
 import 'package:corrode/models/book.dart';
+import 'package:corrode/models/home.dart';
 import 'package:corrode/models/home_category.dart';
 import 'package:dio/dio.dart';
 
@@ -43,14 +44,21 @@ class Api {
     });
   }
 
-  Future home() async {
+  Future<List<Home>> home() async {
     return await request(url: 'book/like').then((value) {
-      return value;
+      List data = value.data;
+      return data.map((e) => Home.fromJson(e)).toList();
     });
   }
 
-  Future<List<Book>> bookList({int page, String catId, int bookStatus}) async {
-    return await request(url: 'book/category-list').then((value) {
+  Future<List<Book>> bookList(
+      {int page, int pageSize, int catId, int bookStatus}) async {
+    return await request(url: 'book/category-list', params: {
+      "page_num": page,
+      "page_size": pageSize,
+      "cat_id": catId,
+      "sort_type": bookStatus
+    }).then((value) {
       Map<String, dynamic> data = value.data;
       List d = data["list"];
       return d.map((e) => Book.fromJson(e)).toList();
@@ -66,6 +74,10 @@ class Api {
 
     if (option == null) {
       option = Options(method: 'post');
+    }
+
+    if (params == null) {
+      params = {};
     }
 
     Response response;

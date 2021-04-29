@@ -1,6 +1,17 @@
+import 'package:corrode/models/book.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'home.g.dart';
+
+enum HomeStyle {
+  @JsonValue(2)
+  CELL,
+  @JsonValue(3)
+  COLLECTION,
+  @JsonValue(10)
+  HOT,
+  UNKNOWN,
+}
 
 @JsonSerializable()
 class Home {
@@ -8,8 +19,8 @@ class Home {
   int recommendId;
   @JsonKey(name: 'label')
   String label;
-  @JsonKey(name: 'style')
-  int style;
+  @JsonKey(name: 'style', unknownEnumValue: HomeStyle.UNKNOWN)
+  HomeStyle style;
   @JsonKey(name: 'type')
   int type;
   @JsonKey(name: 'can_more')
@@ -19,7 +30,7 @@ class Home {
   @JsonKey(name: 'total')
   int total;
   @JsonKey(name: 'list')
-  List list;
+  List<Book> list;
 
   Home({
     this.recommendId,

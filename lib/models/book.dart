@@ -18,9 +18,9 @@ class Book {
 	@JsonKey(name: 'height')
 	int height;
 	@JsonKey(name: 'author')
-	dynamic author;
+	String author;
 	@JsonKey(name: 'description')
-	dynamic description;
+	String description;
 	@JsonKey(name: 'views')
 	int views;
 	@JsonKey(name: 'total_favors')

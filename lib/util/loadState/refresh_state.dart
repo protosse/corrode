@@ -1,26 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-mixin RefreshState<T> {
+mixin RefreshState {
   int page = 1;
   int perPage = 10;
-  List<T> _dataSource = [];
+
+  List dataSource = [];
+  bool _pullDown;
 
   var refreshController = RefreshController(initialRefresh: false);
 
-  request({bool pullDown = true});
+  request({bool pullDown = true}) {
+    _pullDown = pullDown;
+    if (pullDown) {
+      dataSource.clear();
+    }
+  }
 
-  List<T> get dataSource => _dataSource;
-  set dataSource(List<T> data) {
-    _dataSource = data;
+  configDataSource(List data) {
+    if (_pullDown) {
+      dataSource = data;
+    } else {
+      dataSource.addAll(data);
+    }
     if (refreshController.isRefresh) {
       refreshController.refreshCompleted();
-    } else if (refreshController.isLoading) {
+    }
+    if (refreshController.isLoading) {
       if (data.length < perPage) {
         refreshController.loadNoData();
       } else {
         refreshController.loadComplete();
       }
+    }
+  }
+
+  endRefreshing() {
+    if (refreshController.isRefresh) {
+      refreshController.refreshCompleted();
+    }
+    if (refreshController.isLoading) {
+      refreshController.loadComplete();
     }
   }
 }
@@ -35,7 +55,7 @@ class RefreshStateView extends StatelessWidget {
       {this.state,
       this.child,
       this.enablePullDown = true,
-      this.enablePullUp = false});
+      this.enablePullUp = true});
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,5 @@
+import 'package:corrode/models/home.dart';
+import 'package:corrode/modules/home/book_list/book_list_controller.dart';
 import 'package:corrode/modules/home/book_list/book_list_page.dart';
 import 'package:corrode/modules/home/home_controller.dart';
 import 'package:corrode/modules/search/search_page.dart';
@@ -16,23 +18,20 @@ class HomePage extends GetView<HomeController> {
         return Scaffold(
           body: LoadStateView(
             state: controller,
-            child: RefreshStateView(
-              state: controller,
-              child: Column(
-                children: [
-                  Container(
-                    color: Colours.red,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        searchView(),
-                        tabBar(),
-                      ],
-                    ),
+            child: Column(
+              children: [
+                Container(
+                  color: Colours.red,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      searchView(),
+                      tabBar(),
+                    ],
                   ),
-                  Expanded(child: tabBarView())
-                ],
-              ),
+                ),
+                Expanded(child: tabBarView())
+              ],
             ),
           ),
         );
@@ -96,7 +95,7 @@ class HomePage extends GetView<HomeController> {
       indicatorColor: Colors.white,
       indicatorSize: TabBarIndicatorSize.label,
       indicatorWeight: 2.0,
-      tabs: controller.dataSource
+      tabs: controller.tabs
           .map((t) => Tab(
                 text: t.catName,
               ))
@@ -108,16 +107,33 @@ class HomePage extends GetView<HomeController> {
   Widget tabBarView() {
     return TabBarView(
         controller: controller.tabController,
-        children: controller.dataSource.asMap().entries.map((e) {
+        children: controller.tabs.asMap().entries.map((e) {
           if (e.key == 0) {
             return recommendView();
           } else {
-            return BookListPage(category: e.value);
+            var controller =
+                Get.put(BookListController(), tag: e.value.catName);
+            controller.category = e.value;
+            return BookListPage(tag: e.value.catName);
           }
         }).toList());
   }
 
   Widget recommendView() {
-    return Container(color: Colors.yellow);
+    return RefreshStateView(
+      state: controller,
+      child: ListView.builder(
+          itemCount: controller.dataSource.length,
+          itemBuilder: (_, index) {
+            Home model = controller.dataSource[index];
+            if (model.list.length == 0) {
+              return Container();
+            } else {
+              return Container(
+                child: Text(model.label),
+              );
+            }
+          }),
+    );
   }
 }
