@@ -5,7 +5,7 @@ part 'book_chapter.g.dart';
 @JsonSerializable()
 class BookChapter {
   @JsonKey(name: 'chapter_id')
-  int chapterId;
+  dynamic chapterId;
   @JsonKey(name: 'chapter_title')
   String chapterTitle;
 
