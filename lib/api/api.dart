@@ -57,7 +57,7 @@ class Api {
       "page_num": page,
       "page_size": pageSize,
       "cat_id": catId,
-      "sort_type": bookStatus
+      "book_status": bookStatus
     }).then((value) {
       Map<String, dynamic> data = value.data;
       List d = data["list"];

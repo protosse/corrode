@@ -1,11 +1,12 @@
+import 'package:corrode/util/model_helper.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'book_chapter.g.dart';
 
 @JsonSerializable()
 class BookChapter {
-  @JsonKey(name: 'chapter_id')
-  dynamic chapterId;
+  @JsonKey(name: 'chapter_id', fromJson: dynamicToInt)
+  int chapterId;
   @JsonKey(name: 'chapter_title')
   String chapterTitle;
 

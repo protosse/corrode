@@ -5,7 +5,6 @@ import 'package:corrode/modules/home/home_controller.dart';
 import 'package:corrode/modules/search/search_page.dart';
 import 'package:corrode/util/colors.dart';
 import 'package:corrode/util/loadState/load_state.dart';
-import 'package:corrode/util/loadState/refresh_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -120,7 +119,7 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget recommendView() {
-    return RefreshStateView(
+    return LoadStateView(
       state: controller,
       child: ListView.builder(
           itemCount: controller.dataSource.length,

@@ -16,7 +16,7 @@ Book _$BookFromJson(Map<String, dynamic> json) {
     author: json['author'] as String,
     description: json['description'] as String,
     views: json['views'] as int,
-    totalFavors: json['total_favors'] as int,
+    totalFavors: dynamicToString(json['total_favors']),
     displayLabel: json['display_label'] as String,
     tag: (json['tag'] as List)
         ?.map((e) =>
@@ -38,7 +38,7 @@ Book _$BookFromJson(Map<String, dynamic> json) {
     isBaoyue: json['is_baoyue'] as int,
     isFinished: json['is_finished'] as int,
     property: (json['property'] as List)?.map((e) => e as String)?.toList(),
-    hotNum: json['hot_num'],
+    hotNum: dynamicToString(json['hot_num']),
     language: json['language'] as String,
     chapter: json['chapter'] == null
         ? null

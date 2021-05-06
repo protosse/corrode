@@ -1,9 +1,14 @@
-import 'package:corrode/util/loadState/refresh_state.dart';
+import 'dart:ui';
+
+import 'package:corrode/modules/home/book_list/components/book_list_item.dart';
+import 'package:corrode/util/colors.dart';
+import 'package:corrode/util/loadState/load_state.dart';
 import 'package:flutter/material.dart';
 import 'book_list_controller.dart';
 import 'package:get/get.dart';
 
-class BookListPage extends StatelessWidget {
+class BookListPage extends GetView<BookListController> {
+  @override
   final String tag;
   BookListPage({@required this.tag});
 
@@ -13,18 +18,75 @@ class BookListPage extends StatelessWidget {
         tag: tag,
         builder: (controller) {
           return Scaffold(
-            body: RefreshStateView(
-              state: controller,
-              child: ListView.builder(
-                  itemCount: controller.dataSource.length,
-                  itemBuilder: (_, index) {
-                    var model = controller.dataSource[index];
-                    return Container(
-                      child: Text(model.name),
-                    );
-                  }),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _filterView(),
+                Expanded(
+                  child: LoadStateView(
+                    state: controller,
+                    child: ListView.builder(
+                        itemCount: controller.dataSource.length,
+                        itemBuilder: (_, index) {
+                          var model = controller.dataSource[index];
+                          return BookListItem(model: model);
+                        }),
+                  ),
+                ),
+              ],
             ),
           );
         });
+  }
+
+  Widget _filterView() {
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Wrap(
+          spacing: 10,
+          children: [
+            _filterItem("全部", 0, () {
+              controller.bookStatus.value = 0;
+            }),
+            _filterItem("已完结", 2, () {
+              controller.bookStatus.value = 2;
+            }),
+            _filterItem("连载中", 1, () {
+              controller.bookStatus.value = 1;
+            }),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _filterItem(String text, int index, VoidCallback tap) {
+    return Container(
+        height: 30,
+        child: Obx(() => TextButton(
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 12),
+              ),
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      EdgeInsets.symmetric(horizontal: 25)),
+                  overlayColor: MaterialStateProperty.all(Colours.background),
+                  foregroundColor: MaterialStateProperty.all(
+                      controller.bookStatus.value == index
+                          ? Colours.red
+                          : Colours.text_normal),
+                  backgroundColor:
+                      MaterialStateProperty.all(Colours.background),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(
+                          color: controller.bookStatus.value == index
+                              ? Colours.red
+                              : Colors.transparent,
+                          width: 0.5)))),
+              onPressed: tap,
+            )));
   }
 }

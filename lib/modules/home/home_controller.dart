@@ -1,12 +1,11 @@
 import 'package:corrode/api/api.dart';
 import 'package:corrode/models/home_category.dart';
 import 'package:corrode/util/loadState/load_state.dart';
-import 'package:corrode/util/loadState/refresh_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController
-    with SingleGetTickerProviderMixin, LoadState, RefreshState {
+    with SingleGetTickerProviderMixin, LoadState {
   TabController tabController;
   List<HomeCategory> tabs = [];
 

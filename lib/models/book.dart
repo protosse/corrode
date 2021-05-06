@@ -1,3 +1,4 @@
+import 'package:corrode/util/model_helper.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'book_chapter.dart';
@@ -23,8 +24,8 @@ class Book {
   String description;
   @JsonKey(name: 'views')
   int views;
-  @JsonKey(name: 'total_favors')
-  int totalFavors;
+  @JsonKey(name: 'total_favors', fromJson: dynamicToString)
+  String totalFavors;
   @JsonKey(name: 'display_label')
   String displayLabel;
   @JsonKey(name: 'tag')
@@ -61,8 +62,8 @@ class Book {
   int isFinished;
   @JsonKey(name: 'property')
   List<String> property;
-  @JsonKey(name: 'hot_num')
-  dynamic hotNum;
+  @JsonKey(name: 'hot_num', fromJson: dynamicToString)
+  String hotNum;
   @JsonKey(name: 'language')
   String language;
   @JsonKey(name: 'chapter')
