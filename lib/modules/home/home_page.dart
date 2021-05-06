@@ -3,7 +3,7 @@ import 'package:corrode/modules/home/book_list/book_list_controller.dart';
 import 'package:corrode/modules/home/book_list/book_list_page.dart';
 import 'package:corrode/modules/home/home_controller.dart';
 import 'package:corrode/modules/search/search_page.dart';
-import 'package:corrode/util/colors.dart';
+import 'package:corrode/theme/colors.dart';
 import 'package:corrode/util/loadState/load_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class HomePage extends GetView<HomeController> {
             child: Column(
               children: [
                 Container(
-                  color: Colours.red,
+                  color: Colours.app_main,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

@@ -1,4 +1,3 @@
-import 'package:corrode/modules/home/home_controller.dart';
 import 'package:corrode/modules/home/home_page.dart';
 import 'package:corrode/modules/mine/mine_page.dart';
 import 'package:flutter/cupertino.dart';

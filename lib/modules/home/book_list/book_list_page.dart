@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:corrode/modules/home/book_list/components/book_list_item.dart';
-import 'package:corrode/util/colors.dart';
+import 'package:corrode/theme/colors.dart';
 import 'package:corrode/util/loadState/load_state.dart';
 import 'package:flutter/material.dart';
 import 'book_list_controller.dart';
@@ -75,7 +75,7 @@ class BookListPage extends GetView<BookListController> {
                   overlayColor: MaterialStateProperty.all(Colours.background),
                   foregroundColor: MaterialStateProperty.all(
                       controller.bookStatus.value == index
-                          ? Colours.red
+                          ? Colours.app_main
                           : Colours.text_normal),
                   backgroundColor:
                       MaterialStateProperty.all(Colours.background),
@@ -83,7 +83,7 @@ class BookListPage extends GetView<BookListController> {
                       borderRadius: BorderRadius.circular(18.0),
                       side: BorderSide(
                           color: controller.bookStatus.value == index
-                              ? Colours.red
+                              ? Colours.app_main
                               : Colors.transparent,
                           width: 0.5)))),
               onPressed: tap,
