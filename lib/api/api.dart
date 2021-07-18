@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../models/book.dart';
-import '../models/home.dart';
-import '../models/home_category.dart';
+import '../models/chapter.dart';
 import 'header_interceptor.dart';
 import 'log_interceptor.dart';
 
@@ -31,40 +30,19 @@ class Api {
 
   Dio _dio = Dio();
 
-  var prefix = "http://47.108.217.123:9999/";
+  var prefix = "http://xiaoshuo.muniao.org/api/";
 
   Api() {
     _dio.interceptors.add(HeaderInterceptors());
     _dio.interceptors.add(LogsInterceptor());
   }
 
-  Future<List<HomeCategory>> homeCategory() async {
-    return await request(url: 'book/category').then((value) {
-      List data = value.data;
-      return data.map((e) => HomeCategory.fromJson(e)).toList();
-    });
-  }
-
-  Future<List<Home>> home() async {
-    return await request(url: 'book/like').then((value) {
-      List data = value.data;
-      return data.map((e) => Home.fromJson(e)).toList();
-    });
-  }
-
-  Future<List<Book>> bookList(
-      {required int page,
-      required int pageSize,
-      required int catId,
-      required int bookStatus}) async {
-    return await request(url: 'book/category-list', params: {
-      "page_num": page,
-      "page_size": pageSize,
-      "cat_id": catId,
-      "book_status": bookStatus
+  Future<List<Book>> bookList({required int page, required int perPage}) async {
+    return await request(url: 'article/index', params: {
+      "page": page,
+      "limit": perPage,
     }).then((value) {
-      Map<String, dynamic> data = value.data;
-      List d = data["list"];
+      List d = value.data;
       return d.map((e) => Book.fromJson(e)).toList();
     });
   }
@@ -101,7 +79,7 @@ class Api {
       int code = object["code"];
       var message = object["msg"];
 
-      if (code == 0) {
+      if (code == 200) {
         return ApiResponse(code: code, data: data);
       } else {
         throw ApiError(message: message ?? "", code: code);

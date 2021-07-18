@@ -1,6 +1,4 @@
-class Constants {
-
-}
+class Constants {}
 
 class StorageKeys {
   static const token = 'token';

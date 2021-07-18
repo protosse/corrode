@@ -1,7 +1,8 @@
 abstract class Routes {
-  static const INITIAL = '/';
-  static const TAB = '/tab';
-  static const SPLASH = '/splash';
-  static const HOME = '/home';
-  static const SEARCH = '/search';
+  static const initial = '/';
+  static const tab = '/tab';
+  static const splash = '/splash';
+  static const home = '/home';
+  static const search = '/search';
+  static const bookDetail = '/book/:id';
 }

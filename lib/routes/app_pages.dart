@@ -1,3 +1,5 @@
+import 'package:corrode/modules/home/book_detail/book_detail_binding.dart';
+import 'package:corrode/modules/home/book_detail/book_detail_page.dart';
 import 'package:get/get.dart';
 
 import '../modules/search/search_binding.dart';
@@ -11,19 +13,24 @@ import 'app_routes.dart';
 class AppPages {
   static final pages = [
     GetPage(
-      name: Routes.TAB,
+      name: Routes.tab,
       page: () => MyTabPage(),
       binding: MyTabBinding(),
     ),
     GetPage(
-      name: Routes.SPLASH,
+      name: Routes.splash,
       page: () => SplashPage(),
       binding: SplashBinding(),
     ),
     GetPage(
-      name: Routes.SEARCH,
+      name: Routes.search,
       page: () => SearchPage(),
       binding: SearchBinding(),
+    ),
+    GetPage(
+      name: Routes.bookDetail,
+      page: () => BookDetailPage(),
+      binding: BookDetailBinding(),
     )
   ];
 }

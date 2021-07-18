@@ -12,11 +12,9 @@ class MyTabPage extends StatelessWidget {
     return GetBuilder<MyTabController>(
       builder: (controller) {
         return Scaffold(
-          body: SafeArea(
-            child: IndexedStack(
-              index: controller.tabIndex,
-              children: [HomePage(), MinePage()],
-            ),
+          body: IndexedStack(
+            index: controller.tabIndex,
+            children: [HomePage(), MinePage()],
           ),
           bottomNavigationBar: BottomNavigationBar(
             unselectedItemColor: Colors.grey,

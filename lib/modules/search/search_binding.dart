@@ -8,4 +8,3 @@ class SearchBinding implements Bindings {
     Get.lazyPut<SearchController>(() => SearchController());
   }
 }
-		

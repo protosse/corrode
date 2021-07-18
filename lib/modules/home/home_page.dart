@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../models/home.dart';
+import '../../models/book.dart';
 import '../../theme/colors.dart';
-import '../../util/extensions/iterable_extension.dart';
 import '../../util/loadState/load_state.dart';
 import '../search/search_page.dart';
 import 'book_list/book_list_controller.dart';
 import 'book_list/book_list_page.dart';
+import 'book_list/components/book_list_item.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -16,16 +17,17 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (_) {
-        return Scaffold(
-          body: LoadStateView(
-            state: controller,
-            child: Column(
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light,
+          child: Scaffold(
+            body: Column(
               children: [
                 Container(
                   color: Colours.app_main,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Padding(padding: EdgeInsets.only(top: 10)),
                       searchView(),
                       tabBar(),
                     ],
@@ -98,7 +100,7 @@ class HomePage extends GetView<HomeController> {
       indicatorWeight: 2.0,
       tabs: controller.tabs
           .map((t) => Tab(
-                text: t.catName,
+                text: t.name,
               ))
           .toList(),
       controller: controller.tabController,
@@ -109,33 +111,13 @@ class HomePage extends GetView<HomeController> {
     return TabBarView(
         controller: controller.tabController,
         children: controller.tabs.asMap().entries.map((e) {
-          if (e.key == 0) {
-            return recommendView();
-          } else {
-            var controller =
-                Get.put(BookListController(), tag: e.value.catName);
-            controller.category = e.value;
-            return BookListPage(tag: e.value.catName ?? "");
-          }
+          var controller = Get.put(BookListController(), tag: e.value.name);
+          controller.category = e.value;
+          return BookListPage(tag: e.value.name);
         }).toList());
   }
 
   Widget recommendView() {
-    return LoadStateView(
-      state: controller,
-      child: ListView.builder(
-          itemCount: controller.dataSource.length,
-          itemBuilder: (_, index) {
-            Home model = controller.dataSource[index];
-            var a = model.list?.first;
-            if (model.list.isNullOrEmpty) {
-              return Container();
-            } else {
-              return Container(
-                child: Text(model.label ?? ""),
-              );
-            }
-          }),
-    );
+    return Container();
   }
 }
