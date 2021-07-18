@@ -3,9 +3,9 @@ import 'package:dio/dio.dart';
 
 class HeaderInterceptors extends InterceptorsWrapper {
   @override
-  onRequest(RequestOptions options) async {
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers[HttpHeaders.acceptHeader] = 'application/json';
     options.headers[HttpHeaders.contentTypeHeader] = 'application/json';
-    return options;
+    handler.next(options);
   }
 }

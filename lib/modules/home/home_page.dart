@@ -1,13 +1,15 @@
-import 'package:corrode/models/home.dart';
-import 'package:corrode/modules/home/book_list/book_list_controller.dart';
-import 'package:corrode/modules/home/book_list/book_list_page.dart';
-import 'package:corrode/modules/home/home_controller.dart';
-import 'package:corrode/modules/search/search_page.dart';
-import 'package:corrode/theme/colors.dart';
-import 'package:corrode/util/loadState/load_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../models/home.dart';
+import '../../theme/colors.dart';
+import '../../util/extensions/iterable_extension.dart';
+import '../../util/loadState/load_state.dart';
+import '../search/search_page.dart';
+import 'book_list/book_list_controller.dart';
+import 'book_list/book_list_page.dart';
+import 'home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -113,7 +115,7 @@ class HomePage extends GetView<HomeController> {
             var controller =
                 Get.put(BookListController(), tag: e.value.catName);
             controller.category = e.value;
-            return BookListPage(tag: e.value.catName);
+            return BookListPage(tag: e.value.catName ?? "");
           }
         }).toList());
   }
@@ -125,11 +127,12 @@ class HomePage extends GetView<HomeController> {
           itemCount: controller.dataSource.length,
           itemBuilder: (_, index) {
             Home model = controller.dataSource[index];
-            if (model.list.length == 0) {
+            var a = model.list?.first;
+            if (model.list.isNullOrEmpty) {
               return Container();
             } else {
               return Container(
-                child: Text(model.label),
+                child: Text(model.label ?? ""),
               );
             }
           }),

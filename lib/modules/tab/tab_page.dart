@@ -1,14 +1,12 @@
-import 'package:corrode/modules/home/home_page.dart';
-import 'package:corrode/modules/mine/mine_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../home/home_page.dart';
+import '../mine/mine_page.dart';
 import 'tab_controller.dart';
 
 class MyTabPage extends StatelessWidget {
-  const MyTabPage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MyTabController>(
@@ -46,7 +44,7 @@ class MyTabPage extends StatelessWidget {
     );
   }
 
-  _bottomNavigationBarItem({IconData icon, String label}) {
+  _bottomNavigationBarItem({IconData? icon, String? label}) {
     return BottomNavigationBarItem(
       icon: Icon(icon),
       label: label,

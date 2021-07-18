@@ -1,16 +1,17 @@
 import 'dart:ui';
 
-import 'package:corrode/modules/home/book_list/components/book_list_item.dart';
-import 'package:corrode/theme/colors.dart';
-import 'package:corrode/util/loadState/load_state.dart';
 import 'package:flutter/material.dart';
-import 'book_list_controller.dart';
 import 'package:get/get.dart';
+
+import '../../../theme/colors.dart';
+import '../../../util/loadState/load_state.dart';
+import 'book_list_controller.dart';
+import 'components/book_list_item.dart';
 
 class BookListPage extends GetView<BookListController> {
   @override
   final String tag;
-  BookListPage({@required this.tag});
+  BookListPage({required this.tag});
 
   @override
   Widget build(Object context) {

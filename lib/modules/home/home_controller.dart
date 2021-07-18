@@ -1,12 +1,13 @@
-import 'package:corrode/api/api.dart';
-import 'package:corrode/models/home_category.dart';
-import 'package:corrode/util/loadState/load_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../api/api.dart';
+import '../../models/home_category.dart';
+import '../../util/loadState/load_state.dart';
+
 class HomeController extends GetxController
     with SingleGetTickerProviderMixin, LoadState {
-  TabController tabController;
+  TabController? tabController;
   List<HomeCategory> tabs = [];
 
   @override
@@ -17,9 +18,7 @@ class HomeController extends GetxController
 
   @override
   void onClose() {
-    if (tabController != null) {
-      tabController.dispose();
-    }
+    tabController?.dispose();
     super.onClose();
   }
 
@@ -31,7 +30,7 @@ class HomeController extends GetxController
 
     Future.wait([home, category]).then((value) {
       isFirstLoad = false;
-      tabs = value[1];
+      tabs = value[1] as List<HomeCategory>;
       tabs.insert(0, HomeCategory(catId: -1, catName: "推荐"));
       configDataSource(value.first);
     }).catchError((error) {

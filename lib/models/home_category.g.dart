@@ -8,8 +8,8 @@ part of 'home_category.dart';
 
 HomeCategory _$HomeCategoryFromJson(Map<String, dynamic> json) {
   return HomeCategory(
-    catId: json['cat_id'] as int,
-    catName: json['cat_name'] as String,
+    catId: json['cat_id'] as int?,
+    catName: json['cat_name'] as String?,
   );
 }
 

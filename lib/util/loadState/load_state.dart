@@ -13,7 +13,7 @@ mixin LoadState {
   int perPage = 10;
 
   List dataSource = [];
-  bool _pullDown;
+  bool _pullDown = true;
 
   var refreshController = RefreshController(initialRefresh: false);
 
@@ -60,8 +60,8 @@ class LoadStateView extends StatelessWidget {
   final bool enableEmpty;
 
   LoadStateView(
-      {this.state,
-      this.child,
+      {required this.state,
+      required this.child,
       this.enablePullDown = true,
       this.enablePullUp = true,
       this.enableEmpty = true});

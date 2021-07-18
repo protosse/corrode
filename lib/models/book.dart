@@ -1,6 +1,6 @@
-import 'package:corrode/util/model_helper.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../util/model_helper.dart';
 import 'book_chapter.dart';
 import 'book_tag.dart';
 
@@ -9,65 +9,65 @@ part 'book.g.dart';
 @JsonSerializable()
 class Book {
   @JsonKey(name: 'book_id')
-  int bookId;
+  int? bookId;
   @JsonKey(name: 'name')
-  String name;
+  String? name;
   @JsonKey(name: 'cover')
-  String cover;
+  String? cover;
   @JsonKey(name: 'width')
-  int width;
+  int? width;
   @JsonKey(name: 'height')
-  int height;
+  int? height;
   @JsonKey(name: 'author')
-  String author;
+  String? author;
   @JsonKey(name: 'description')
-  String description;
+  String? description;
   @JsonKey(name: 'views')
-  int views;
+  int? views;
   @JsonKey(name: 'total_favors', fromJson: dynamicToString)
-  String totalFavors;
+  String? totalFavors;
   @JsonKey(name: 'display_label')
-  String displayLabel;
+  String? displayLabel;
   @JsonKey(name: 'tag')
-  List<BookTag> tag;
+  List<BookTag>? tag;
   @JsonKey(name: 'finished')
-  String finished;
+  String? finished;
   @JsonKey(name: 'flag')
-  String flag;
+  String? flag;
   @JsonKey(name: 'total_words')
-  String totalWords;
+  String? totalWords;
   @JsonKey(name: 'words_price')
-  int wordsPrice;
+  int? wordsPrice;
   @JsonKey(name: 'chapter_price')
-  int chapterPrice;
+  int? chapterPrice;
   @JsonKey(name: 'like_num')
-  String likeNum;
+  String? likeNum;
   @JsonKey(name: 'status')
-  int status;
+  int? status;
   @JsonKey(name: 'total_comment')
-  String totalComment;
+  String? totalComment;
   @JsonKey(name: 'share_num')
-  String shareNum;
+  String? shareNum;
   @JsonKey(name: 'total_chapter')
-  int totalChapter;
+  int? totalChapter;
   @JsonKey(name: 'last_chapter_time')
-  String lastChapterTime;
+  String? lastChapterTime;
   @JsonKey(name: 'last_chapter')
-  String lastChapter;
+  String? lastChapter;
   @JsonKey(name: 'is_vip')
-  int isVip;
+  int? isVip;
   @JsonKey(name: 'is_baoyue')
-  int isBaoyue;
+  int? isBaoyue;
   @JsonKey(name: 'is_finished')
-  int isFinished;
+  int? isFinished;
   @JsonKey(name: 'property')
-  List<String> property;
+  List<String>? property;
   @JsonKey(name: 'hot_num', fromJson: dynamicToString)
-  String hotNum;
+  String? hotNum;
   @JsonKey(name: 'language')
-  String language;
+  String? language;
   @JsonKey(name: 'chapter')
-  BookChapter chapter;
+  BookChapter? chapter;
 
   Book({
     this.bookId,

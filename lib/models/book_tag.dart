@@ -5,9 +5,9 @@ part 'book_tag.g.dart';
 @JsonSerializable()
 class BookTag {
   @JsonKey(name: 'tab')
-  String tab;
+  String? tab;
   @JsonKey(name: 'color')
-  String color;
+  String? color;
 
   BookTag({this.tab, this.color});
 

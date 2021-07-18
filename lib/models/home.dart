@@ -1,4 +1,4 @@
-import 'package:corrode/models/book.dart';
+import 'book.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'home.g.dart';
@@ -16,21 +16,21 @@ enum HomeStyle {
 @JsonSerializable()
 class Home {
   @JsonKey(name: 'recommend_id')
-  int recommendId;
+  int? recommendId;
   @JsonKey(name: 'label')
-  String label;
+  String? label;
   @JsonKey(name: 'style', unknownEnumValue: HomeStyle.UNKNOWN)
-  HomeStyle style;
+  HomeStyle? style;
   @JsonKey(name: 'type')
-  int type;
+  int? type;
   @JsonKey(name: 'can_more')
-  bool canMore;
+  bool? canMore;
   @JsonKey(name: 'can_refresh')
-  bool canRefresh;
+  bool? canRefresh;
   @JsonKey(name: 'total')
-  int total;
+  int? total;
   @JsonKey(name: 'list')
-  List<Book> list;
+  List<Book>? list;
 
   Home({
     this.recommendId,

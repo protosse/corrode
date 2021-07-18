@@ -8,11 +8,11 @@ part of 'home_banner.dart';
 
 HomeBanner _$HomeBannerFromJson(Map<String, dynamic> json) {
   return HomeBanner(
-    image: json['image'] as String,
-    action: json['action'] as int,
-    content: json['content'] as String,
-    color: json['color'] as String,
-    isLogin: json['is_login'] as int,
+    image: json['image'] as String?,
+    action: json['action'] as int?,
+    content: json['content'] as String?,
+    color: json['color'] as String?,
+    isLogin: json['is_login'] as int?,
   );
 }
 

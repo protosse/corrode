@@ -1,14 +1,16 @@
-import 'package:corrode/modules/home/home_binding.dart';
-import 'package:corrode/modules/home/home_page.dart';
-import 'package:corrode/routes/app_pages.dart';
-import 'package:corrode/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'modules/splash/splash_binding.dart';
+import 'modules/splash/splash_page.dart';
+import 'routes/app_pages.dart';
+import 'theme/app_theme.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
     initialRoute: "/",
     builder: (context, child) => Scaffold(
       body: GestureDetector(
@@ -21,14 +23,14 @@ void main() async {
     theme: appThemeData,
     defaultTransition: Transition.native,
     getPages: AppPages.pages,
-    initialBinding: HomeBinding(),
-    home: HomePage(),
+    initialBinding: SplashBinding(),
+    home: SplashPage(),
   ));
 }
 
 void hideKeyboard(BuildContext context) {
   FocusScopeNode currentFocus = FocusScope.of(context);
   if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
-    FocusManager.instance.primaryFocus.unfocus();
+    FocusManager.instance.primaryFocus?.unfocus();
   }
 }

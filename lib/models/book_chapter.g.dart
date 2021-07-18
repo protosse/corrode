@@ -9,7 +9,7 @@ part of 'book_chapter.dart';
 BookChapter _$BookChapterFromJson(Map<String, dynamic> json) {
   return BookChapter(
     chapterId: dynamicToInt(json['chapter_id']),
-    chapterTitle: json['chapter_title'] as String,
+    chapterTitle: json['chapter_title'] as String?,
   );
 }
 

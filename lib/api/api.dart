@@ -1,8 +1,8 @@
-import 'package:corrode/models/book.dart';
-import 'package:corrode/models/home.dart';
-import 'package:corrode/models/home_category.dart';
 import 'package:dio/dio.dart';
 
+import '../models/book.dart';
+import '../models/home.dart';
+import '../models/home_category.dart';
 import 'header_interceptor.dart';
 import 'log_interceptor.dart';
 
@@ -10,18 +10,19 @@ class ApiResponse {
   var data;
   int code;
 
-  ApiResponse({this.data, this.code});
+  ApiResponse({this.data, required this.code});
 }
 
 class ApiError implements Exception {
-  String message;
+  String? message;
   int code;
 
-  ApiError({this.message, this.code});
+  ApiError({this.message, required this.code});
 
   @override
   String toString() {
-    return message;
+    var m = message ?? "";
+    return "$code: $m";
   }
 }
 
@@ -52,7 +53,10 @@ class Api {
   }
 
   Future<List<Book>> bookList(
-      {int page, int pageSize, int catId, int bookStatus}) async {
+      {required int page,
+      required int pageSize,
+      required int catId,
+      required int bookStatus}) async {
     return await request(url: 'book/category-list', params: {
       "page_num": page,
       "page_size": pageSize,
@@ -66,10 +70,10 @@ class Api {
   }
 
   Future<ApiResponse> request(
-      {String url,
+      {required String url,
       params,
-      Map<String, dynamic> queryParameters,
-      Options option}) async {
+      Map<String, dynamic>? queryParameters,
+      Options? option}) async {
     url = prefix + url;
 
     if (option == null) {

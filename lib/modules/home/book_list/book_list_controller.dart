@@ -1,12 +1,13 @@
-import 'package:corrode/api/api.dart';
-import 'package:corrode/models/home_category.dart';
-import 'package:corrode/util/loadState/load_state.dart';
-import 'package:corrode/util/extensions/future_extension.dart';
 import 'package:get/get.dart';
+
+import '../../../api/api.dart';
+import '../../../models/home_category.dart';
+import '../../../util/extensions/future_extension.dart';
+import '../../../util/loadState/load_state.dart';
 
 class BookListController extends GetxController
     with SingleGetTickerProviderMixin, LoadState {
-  HomeCategory category;
+  late HomeCategory category;
   var bookStatus = 0.obs;
 
   @override
@@ -28,7 +29,7 @@ class BookListController extends GetxController
         .bookList(
             page: page,
             pageSize: perPage,
-            catId: category.catId,
+            catId: category.catId ?? 0,
             bookStatus: bookStatus.value)
         .toastWhenError()
         .then((value) {

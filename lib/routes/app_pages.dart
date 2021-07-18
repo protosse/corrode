@@ -1,11 +1,12 @@
-import 'package:corrode/modules/search/search_binding.dart';
-import 'package:corrode/modules/search/search_page.dart';
-import 'package:corrode/modules/splash/splash_page.dart';
-import 'package:corrode/modules/splash/splash_binding.dart';
-import 'package:corrode/modules/tab/tab_binding.dart';
-import 'package:corrode/modules/tab/tab_page.dart';
-import 'package:corrode/routes/app_routes.dart';
 import 'package:get/get.dart';
+
+import '../modules/search/search_binding.dart';
+import '../modules/search/search_page.dart';
+import '../modules/splash/splash_binding.dart';
+import '../modules/splash/splash_page.dart';
+import '../modules/tab/tab_binding.dart';
+import '../modules/tab/tab_page.dart';
+import 'app_routes.dart';
 
 class AppPages {
   static final pages = [

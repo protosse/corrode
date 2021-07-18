@@ -8,8 +8,8 @@ part of 'book_tag.dart';
 
 BookTag _$BookTagFromJson(Map<String, dynamic> json) {
   return BookTag(
-    tab: json['tab'] as String,
-    color: json['color'] as String,
+    tab: json['tab'] as String?,
+    color: json['color'] as String?,
   );
 }
 

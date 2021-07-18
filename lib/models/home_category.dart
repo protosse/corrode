@@ -5,9 +5,9 @@ part 'home_category.g.dart';
 @JsonSerializable()
 class HomeCategory {
   @JsonKey(name: 'cat_id')
-  int catId;
+  int? catId;
   @JsonKey(name: 'cat_name')
-  String catName;
+  String? catName;
 
   HomeCategory({this.catId, this.catName});
 

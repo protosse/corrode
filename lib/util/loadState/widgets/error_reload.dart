@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class ErrorReload extends StatelessWidget {
   final String text;
-  final Function onTap;
+  final VoidCallback? onTap;
 
-  ErrorReload({this.text = "", @required this.onTap});
+  ErrorReload({this.text = "", this.onTap});
 
   @override
   Widget build(BuildContext context) {
