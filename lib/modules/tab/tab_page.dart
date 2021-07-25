@@ -18,34 +18,33 @@ class MyTabPage extends StatelessWidget {
           ),
           bottomNavigationBar: BottomNavigationBar(
             unselectedItemColor: Colors.grey,
+            unselectedFontSize: 12,
             selectedItemColor: Colors.blue,
+            selectedFontSize: 12,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.white,
             elevation: 0,
             items: [
-              _bottomNavigationBarItem(
-                icon: CupertinoIcons.home,
-                label: 'Home',
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.home),
+                label: '书城',
               ),
-              _bottomNavigationBarItem(
-                icon: CupertinoIcons.person,
-                label: 'Account',
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.book),
+                label: '书架',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.person),
+                label: '我的',
               ),
             ],
           ),
         );
       },
-    );
-  }
-
-  _bottomNavigationBarItem({IconData? icon, String? label}) {
-    return BottomNavigationBarItem(
-      icon: Icon(icon),
-      label: label,
     );
   }
 }

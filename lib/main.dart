@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'modules/splash/splash_binding.dart';
 import 'modules/splash/splash_page.dart';
@@ -25,6 +27,16 @@ void main() async {
     getPages: AppPages.pages,
     initialBinding: SplashBinding(),
     home: SplashPage(),
+    localizationsDelegates: [
+      GlobalCupertinoLocalizations.delegate,
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      RefreshLocalizations.delegate,
+    ],
+    supportedLocales: [
+      const Locale('en', 'US'),
+      const Locale('zh', 'CN'),
+    ],
   ));
 }
 

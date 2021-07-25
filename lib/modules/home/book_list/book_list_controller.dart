@@ -15,18 +15,6 @@ class BookListController extends GetxController
     request();
   }
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  //   request();
-
-  //   bookStatus.listen((_) {
-  //     isFirstLoad = true;
-  //     update();
-  //     request();
-  //   });
-  // }
-
   @override
   request({bool pullDown = true}) {
     super.request(pullDown: pullDown);

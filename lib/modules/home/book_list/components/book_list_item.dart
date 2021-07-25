@@ -1,9 +1,8 @@
+import '../../../../util/constants/flutter_assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/book.dart';
 import '../../../../theme/colors.dart';
-import '../../../../util/constants/images.dart';
-import '../../../../util/extensions/color_extension.dart';
 
 class BookListItem extends StatelessWidget {
   final Book model;
@@ -23,8 +22,8 @@ class BookListItem extends StatelessWidget {
             child: FadeInImage(
               width: 85,
               fit: BoxFit.cover,
-              placeholder: Images.placeholder,
-              image: Images.placeholder,
+              placeholder: AssetImages.defaultPlaceholder,
+              image: AssetImages.defaultPlaceholder,
               // image: NetworkImage(model.img),
             ),
           ),
@@ -38,8 +37,13 @@ class BookListItem extends StatelessWidget {
                   style: TextStyle(fontSize: 14, color: Colours.text_dark),
                 ),
                 Text(
+                  "作者：${model.author}",
+                  style: TextStyle(fontSize: 12, color: Colours.text_gray),
+                ),
+                Text(
                   model.intro,
-                  // maxLines: 3,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 12, color: Colours.text_gray),
                 ),
               ],

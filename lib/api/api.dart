@@ -47,6 +47,15 @@ class Api {
     });
   }
 
+  Future<List<Chapter>> chapterList({required int id}) async {
+    return await request(url: 'article/getChapter', params: {
+      "article_id": id,
+    }).then((value) {
+      List d = value.data;
+      return d.map((e) => Chapter.fromJson(e)).toList();
+    });
+  }
+
   Future<ApiResponse> request(
       {required String url,
       params,

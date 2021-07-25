@@ -4,5 +4,7 @@ abstract class Routes {
   static const splash = '/splash';
   static const home = '/home';
   static const search = '/search';
-  static const bookDetail = '/book/:id';
+  static const bookDetail = '/book';
+  static const bookRead = '/bookRead';
+  static const bookChapter = '/bookChapter';
 }

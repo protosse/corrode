@@ -5,9 +5,13 @@ import 'package:get/get.dart';
 class SearchPage extends GetView<SearchController> {
   @override
   Widget build(Object context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(),
+    return GetBuilder<SearchController>(
+      builder: (controller) {
+        return Scaffold(
+          appBar: AppBar(),
+          body: Container(),
+        );
+      },
     );
   }
 }
