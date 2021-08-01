@@ -6,7 +6,7 @@ import '../home/home_page.dart';
 import '../mine/mine_page.dart';
 import 'tab_controller.dart';
 
-class MyTabPage extends StatelessWidget {
+class MyTabPage extends GetView<MyTabController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MyTabController>(

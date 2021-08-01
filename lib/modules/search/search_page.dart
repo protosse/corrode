@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'search_controller.dart';
 import 'package:get/get.dart';
+
+import 'search_controller.dart';
 
 class SearchPage extends GetView<SearchController> {
   @override

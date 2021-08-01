@@ -1,6 +1,6 @@
 class RouteModel {
-  String tag;
-  dynamic model;
+  String? tag;
+  dynamic param;
 
-  RouteModel({required this.tag, required this.model});
+  RouteModel({this.tag, required this.param});
 }

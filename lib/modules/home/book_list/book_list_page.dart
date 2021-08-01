@@ -1,3 +1,4 @@
+import 'package:corrode/modules/home/book_detail/book_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,7 @@ import 'components/book_list_item.dart';
 
 class BookListPage extends GetView<BookListController> {
   final BookCategory category;
+
   String get tag {
     return "bookList/${category.name}";
   }
@@ -41,11 +43,12 @@ class BookListPage extends GetView<BookListController> {
                             return InkWell(
                               child: BookListItem(model: model),
                               onTap: () {
+                                var param = BookDetailParam(book: model);
                                 Get.toNamed(
                                   Routes.bookDetail,
                                   arguments: RouteModel(
                                       tag: "${Routes.bookDetail}/${model.id}",
-                                      model: model),
+                                      param: param),
                                 );
                               },
                             );

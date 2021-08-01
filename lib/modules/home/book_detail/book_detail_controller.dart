@@ -2,9 +2,16 @@ import 'package:get/get.dart';
 
 import '../../../models/book.dart';
 
-class BookDetailController extends GetxController {
+class BookDetailParam {
   Book book;
-  BookDetailController({required this.book});
+
+  BookDetailParam({required this.book});
+}
+
+class BookDetailController extends GetxController {
+  BookDetailParam param;
+
+  BookDetailController({required this.param});
 
   var isExpanded = false;
 

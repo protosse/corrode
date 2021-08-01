@@ -15,7 +15,7 @@ class BookDetailPage extends GetView<BookDetailController> {
     return GetBuilder<BookDetailController>(
       tag: rm.tag,
       builder: (controller) {
-        var model = controller.book;
+        var model = controller.param.book;
         return Scaffold(
           appBar: AppBar(
             title: Text(model.title),
@@ -83,8 +83,8 @@ class BookDetailPage extends GetView<BookDetailController> {
       behavior: HitTestBehavior.opaque,
       onTap: () {
         Get.toNamed(Routes.bookChapter,
-            arguments:
-                RouteModel(tag: "${Routes.bookChapter}/${model.id}", model: model));
+            arguments: RouteModel(
+                tag: "${Routes.bookChapter}/${model.id}", param: model));
       },
       child: Column(
         children: [

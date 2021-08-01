@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'chapter.g.dart';
+part 'article.g.dart';
 
 @JsonSerializable()
-class Chapter {
+class Article {
   @JsonKey(defaultValue: 0)
   int id;
   @JsonKey(defaultValue: 0)
@@ -19,17 +19,30 @@ class Chapter {
   @JsonKey(defaultValue: 0)
   int addTime;
 
-  Chapter(
+  late List<Map<String, int>> pageOffsets;
+
+  Article(
       {required this.id,
       required this.articleId,
       required this.num,
       required this.chapter,
       required this.content,
       required this.src,
-      required this.addTime});
+      required this.addTime}) {
+    content = content.replaceAll('<br/>\r\n', '\n');
+  }
 
-  factory Chapter.fromJson(Map<String, dynamic> json) =>
-      _$ChapterFromJson(json);
+  factory Article.fromJson(Map<String, dynamic> json) =>
+      _$ArticleFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ChapterToJson(this);
+  Map<String, dynamic> toJson() => _$ArticleToJson(this);
+
+  String stringAtPageIndex(int index) {
+    var offset = pageOffsets[index];
+    return this.content.substring(offset['start'] ?? 0, offset['end']);
+  }
+
+  int get pageCount {
+    return pageOffsets.length;
+  }
 }

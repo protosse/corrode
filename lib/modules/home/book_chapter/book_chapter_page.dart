@@ -1,9 +1,13 @@
+import 'package:corrode/models/book.dart';
+import 'package:corrode/models/chapter.dart';
+import 'package:corrode/modules/home/book_chapter/components/book_chapter_item.dart';
+import 'package:corrode/modules/home/book_read/book_read_controller.dart';
+import 'package:corrode/routes/app_routes.dart';
 import 'package:corrode/routes/route_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../util/constants/flutter_assets.dart';
 import 'book_chapter_controller.dart';
 
 class BookChapterPage extends GetView<BookChapterController> {
@@ -15,17 +19,30 @@ class BookChapterPage extends GetView<BookChapterController> {
       tag: rm.tag,
       builder: (controller) {
         return Scaffold(
-          body: AnnotatedRegion(
-            value: SystemUiOverlayStyle.dark,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                    child: Image(
-                  image: AssetImages.readBg,
-                  fit: BoxFit.cover,
-                )),
-                _buildPagingView(controller),
-              ],
+          appBar: AppBar(
+            title: Text("目录"),
+          ),
+          body: SafeArea(
+            child: ListView.builder(
+              itemCount: controller.chapters.length,
+              itemBuilder: (_, index) {
+                Book book = controller.param.book;
+                Chapter model = controller.chapters[index];
+                return GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    var param = BookReadParam();
+                    param.book = book;
+                    param.chapters = controller.chapters;
+                    param.index = index;
+                    Get.toNamed(Routes.bookRead,
+                        arguments: RouteModel(
+                            tag: "${Routes.bookRead}/${book.id}",
+                            param: param));
+                  },
+                  child: BookChapterItem(model: model),
+                );
+              },
             ),
           ),
         );
@@ -35,9 +52,5 @@ class BookChapterPage extends GetView<BookChapterController> {
 
   _hideStatusBar() {
     SystemChrome.setEnabledSystemUIOverlays([]);
-  }
-
-  Widget _buildPagingView(BookChapterController controller) {
-    return Container();
   }
 }

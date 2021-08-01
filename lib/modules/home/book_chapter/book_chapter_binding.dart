@@ -7,8 +7,7 @@ class BookChapterBinding implements Bindings {
   @override
   void dependencies() {
     RouteModel rm = Get.arguments;
-    var controller = BookChapterController();
-    controller.book = rm.model;
+    var controller = BookChapterController(param: rm.param);
     Get.lazyPut<BookChapterController>(
       () => controller,
       tag: rm.tag,

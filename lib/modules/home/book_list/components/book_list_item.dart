@@ -1,8 +1,8 @@
-import '../../../../util/constants/flutter_assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/book.dart';
 import '../../../../theme/colors.dart';
+import '../../../../util/constants/flutter_assets.dart';
 
 class BookListItem extends StatelessWidget {
   final Book model;
@@ -54,23 +54,23 @@ class BookListItem extends StatelessWidget {
     );
   }
 
-  // Widget _tags(BuildContext context) {
-  //   return Wrap(
-  //     spacing: 4,
-  //     children: (model. ?? [])
-  //         .map((e) => Container(
-  //             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-  //             child: Text(
-  //               e.tab ?? "",
-  //               style: TextStyle(
-  //                 fontSize: 10,
-  //                 color: HexColor.fromHex(e.color ?? ""),
-  //               ),
-  //             ),
-  //             decoration: BoxDecoration(
-  //                 borderRadius: BorderRadius.circular(4),
-  //                 color: Colours.divider)))
-  //         .toList(),
-  //   );
-  // }
+// Widget _tags(BuildContext context) {
+//   return Wrap(
+//     spacing: 4,
+//     children: (model. ?? [])
+//         .map((e) => Container(
+//             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+//             child: Text(
+//               e.tab ?? "",
+//               style: TextStyle(
+//                 fontSize: 10,
+//                 color: HexColor.fromHex(e.color ?? ""),
+//               ),
+//             ),
+//             decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.circular(4),
+//                 color: Colours.divider)))
+//         .toList(),
+//   );
+// }
 }

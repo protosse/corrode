@@ -1,18 +1,22 @@
-import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../api/api.dart';
 import '../../../models/book.dart';
 import '../../../models/chapter.dart';
-import 'package:get/get.dart';
 import '../../../util/extensions/future_extension.dart';
 
+class BookChapterParam {
+  Book book;
+
+  BookChapterParam({required this.book});
+}
+
 class BookChapterController extends GetxController {
-  Book? book;
-  int? bookId;
+  BookChapterParam param;
+
+  BookChapterController({required this.param});
 
   List<Chapter> chapters = [];
-
-  PageController pageController = PageController(keepPage: false);
 
   @override
   void onReady() {
@@ -21,10 +25,7 @@ class BookChapterController extends GetxController {
   }
 
   request() {
-    var id = bookId ?? book?.id;
-    if (id == null) {
-      return;
-    }
+    var id = param.book.id;
     Api.share.chapterList(id: id).toastWhenError().then((value) {
       chapters = value;
     }).whenComplete(() {

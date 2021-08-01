@@ -1,14 +1,15 @@
-import '../../../routes/route_model.dart';
 import 'package:get/get.dart';
+
+import '../../../routes/route_model.dart';
 import 'book_detail_controller.dart';
 
 class BookDetailBinding implements Bindings {
   @override
   void dependencies() {
     RouteModel rm = Get.arguments;
-    var bookDetailController = BookDetailController(book: rm.model);
+    var controller = BookDetailController(param: rm.param);
     Get.lazyPut<BookDetailController>(
-      () => bookDetailController,
+      () => controller,
       tag: rm.tag,
     );
   }

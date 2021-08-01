@@ -11,5 +11,6 @@ class BookCategory {
 
   factory BookCategory.fromJson(Map<String, dynamic> json) =>
       _$BookCategoryFromJson(json);
+
   Map<String, dynamic> toJson() => _$BookCategoryToJson(this);
 }

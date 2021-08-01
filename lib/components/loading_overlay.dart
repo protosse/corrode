@@ -9,6 +9,7 @@ class LoadingOverlay extends StatelessWidget {
     required this.isLoading,
     required this.child,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
