@@ -1,4 +1,4 @@
-import 'package:corrode/modules/home/book_detail/book_detail_controller.dart';
+import '../book_detail/book_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,7 @@ class BookListPage extends GetView<BookListController> {
   final BookCategory category;
 
   String get tag {
-    return "bookList/${category.name}";
+    return "bookList/${category.catName}";
   }
 
   BookListPage({required this.category}) {

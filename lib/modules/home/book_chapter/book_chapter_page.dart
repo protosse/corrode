@@ -1,14 +1,13 @@
-import 'package:corrode/models/book.dart';
-import 'package:corrode/models/chapter.dart';
-import 'package:corrode/modules/home/book_chapter/components/book_chapter_item.dart';
-import 'package:corrode/modules/home/book_read/book_read_controller.dart';
-import 'package:corrode/routes/app_routes.dart';
-import 'package:corrode/routes/route_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../models/book.dart';
+import '../../../models/chapter.dart';
+import '../../../routes/app_routes.dart';
+import '../../../routes/route_model.dart';
+import '../book_read/book_read_controller.dart';
 import 'book_chapter_controller.dart';
+import 'components/book_chapter_item.dart';
 
 class BookChapterPage extends GetView<BookChapterController> {
   @override

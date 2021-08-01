@@ -1,13 +1,14 @@
-import 'package:corrode/api/api.dart';
-import 'package:corrode/models/article.dart';
-import 'package:corrode/models/book.dart';
-import 'package:corrode/models/chapter.dart';
-import 'package:corrode/modules/home/book_read/reader_utils.dart';
-import 'package:corrode/util/screen.dart';
-import '../../../util/extensions/future_extension.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import '../../../api/api.dart';
+import '../../../models/article.dart';
+import '../../../models/book.dart';
+import '../../../models/chapter.dart';
+import '../../../util/extensions/future_extension.dart';
+import '../../../util/screen.dart';
+import 'book_read_utils.dart';
 
 class BookReadParam {
   late Book book;
@@ -106,15 +107,19 @@ class BookReadController extends FullLifeCycleController {
       id: 0,
       bookId: chapter.bookId,
       chapter: chapter.chapter,
-      content: chapter.content,
+      content: "chapter.content",
       nextArticleId: index + 1,
       preArticleId: index - 1,
     );
 
-    var contentHeight =
-        Screen.height - topSafeHeight - 30 - Screen.bottomSafeHeight - 30 - 20;
+    var contentHeight = Screen.height -
+        topSafeHeight -
+        BookReadUtils.share.topOffset -
+        Screen.bottomSafeHeight -
+        BookReadUtils.share.bottomOffset -
+        20;
     var contentWidth = Screen.width - 15 - 10;
-    article.pageOffsets = ReaderUtils.getPageOffsets(
+    article.pageOffsets = BookReadUtils.getPageOffsets(
         article.content, contentHeight, contentWidth, 20);
     return Future.value(article);
   }

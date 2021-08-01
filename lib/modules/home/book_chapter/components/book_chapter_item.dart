@@ -1,7 +1,7 @@
-import 'package:corrode/models/chapter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../models/chapter.dart';
 import '../../../../theme/colors.dart';
 
 class BookChapterItem extends StatelessWidget {

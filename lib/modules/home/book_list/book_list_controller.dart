@@ -19,7 +19,7 @@ class BookListController extends GetxController
   request({bool pullDown = true}) {
     super.request(pullDown: pullDown);
     Api.share
-        .bookList(page: page, perPage: perPage)
+        .bookList(page: page, perPage: perPage, catId: category.id)
         .toastWhenError()
         .then((value) {
       isFirstLoad = false;

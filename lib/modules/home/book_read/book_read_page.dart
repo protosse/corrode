@@ -1,10 +1,10 @@
-import 'package:corrode/models/article.dart';
-import 'package:corrode/routes/route_model.dart';
-import 'package:corrode/util/constants/assets_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../models/article.dart';
+import '../../../routes/route_model.dart';
+import '../../../util/constants/assets_images.dart';
 import 'book_read_controller.dart';
 import 'components/book_read_view.dart';
 

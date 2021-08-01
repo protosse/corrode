@@ -1,4 +1,3 @@
-import 'package:corrode/modules/home/book_chapter/book_chapter_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +6,7 @@ import '../../../routes/app_routes.dart';
 import '../../../routes/route_model.dart';
 import '../../../theme/colors.dart';
 import '../../../util/constants/flutter_assets.dart';
+import '../book_chapter/book_chapter_controller.dart';
 import 'book_detail_controller.dart';
 
 class BookDetailPage extends GetView<BookDetailController> {

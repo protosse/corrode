@@ -1,6 +1,8 @@
-import 'package:corrode/models/article.dart';
 import 'package:flutter/material.dart';
-import 'package:corrode/util/screen.dart';
+
+import '../../../../models/article.dart';
+import '../../../../util/screen.dart';
+import '../book_read_utils.dart';
 
 class BookReaderView extends StatelessWidget {
   final Article article;
@@ -27,8 +29,8 @@ class BookReaderView extends StatelessWidget {
     }
     return Container(
       color: Colors.transparent,
-      margin: EdgeInsets.fromLTRB(
-          15, topSafeHeight + 30, 10, Screen.bottomSafeHeight + 30),
+      margin: EdgeInsets.fromLTRB(15, topSafeHeight + BookReadUtils.share.topOffset, 10,
+          Screen.bottomSafeHeight + BookReadUtils.share.bottomOffset),
       child: Text.rich(
         TextSpan(children: [
           TextSpan(

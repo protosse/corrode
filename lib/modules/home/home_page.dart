@@ -57,7 +57,7 @@ class HomePage extends GetView<HomeController> {
       indicatorWeight: 2.0,
       tabs: controller.tabs
           .map((t) => Tab(
-                text: t.name,
+                text: t.catName,
               ))
           .toList(),
       controller: controller.tabController,

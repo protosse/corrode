@@ -28,15 +28,12 @@ class HomeController extends GetxController
   request({bool pullDown = true}) {
     super.request(pullDown: pullDown);
     var home = Api.share.bookList(page: page, perPage: perPage);
-    var category = Future.value([
-      BookCategory(name: "全部"),
-      // BookCategory(name: "奇幻"),
-      // BookCategory(name: "玄幻"),
-    ]);
+    var category = Api.share.categoryList();
 
     Future.wait([home, category]).then((value) {
       isFirstLoad = false;
       tabs = value[1] as List<BookCategory>;
+      tabs.insert(0, BookCategory.all());
       var data = value[0] as List<Book>;
       configDataSource(data);
     }).catchError((error) {

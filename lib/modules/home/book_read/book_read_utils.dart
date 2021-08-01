@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ReaderUtils {
+class BookReadUtils {
+  static BookReadUtils share = BookReadUtils();
+
+  double topOffset = 30;
+  double bottomOffset = 30;
+  double fontSize = 20;
+
   static List<Map<String, int>> getPageOffsets(
       String content, double height, double width, double fontSize) {
     String tempStr = content;
