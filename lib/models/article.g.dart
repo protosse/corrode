@@ -9,24 +9,19 @@ part of 'article.dart';
 Article _$ArticleFromJson(Map<String, dynamic> json) {
   return Article(
     id: json['id'] as int? ?? 0,
-    articleId: json['articleId'] as int? ?? 0,
-    num: json['num'] as int? ?? 0,
+    bookId: json['articleId'] as int? ?? 0,
     chapter: json['chapter'] as String? ?? '',
     content: json['content'] as String? ?? '',
-    src: json['src'] as String? ?? '',
-    addTime: json['addTime'] as int? ?? 0,
-  )..pageOffsets = (json['pageOffsets'] as List<dynamic>)
-      .map((e) => Map<String, int>.from(e as Map))
-      .toList();
+    nextArticleId: json['nextArticleId'] as int? ?? 0,
+    preArticleId: json['preArticleId'] as int? ?? 0,
+  );
 }
 
 Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
       'id': instance.id,
-      'articleId': instance.articleId,
-      'num': instance.num,
+      'articleId': instance.bookId,
       'chapter': instance.chapter,
       'content': instance.content,
-      'src': instance.src,
-      'addTime': instance.addTime,
-      'pageOffsets': instance.pageOffsets,
+      'nextArticleId': instance.nextArticleId,
+      'preArticleId': instance.preArticleId,
     };

@@ -6,8 +6,8 @@ part 'chapter.g.dart';
 class Chapter {
   @JsonKey(defaultValue: 0)
   int id;
-  @JsonKey(defaultValue: 0)
-  int articleId;
+  @JsonKey(defaultValue: 0, name: "articleId")
+  int bookId;
   @JsonKey(defaultValue: 0)
   int num;
   @JsonKey(defaultValue: "")
@@ -21,7 +21,7 @@ class Chapter {
 
   Chapter(
       {required this.id,
-      required this.articleId,
+      required this.bookId,
       required this.num,
       required this.chapter,
       required this.content,

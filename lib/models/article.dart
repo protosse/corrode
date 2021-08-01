@@ -6,29 +6,28 @@ part 'article.g.dart';
 class Article {
   @JsonKey(defaultValue: 0)
   int id;
-  @JsonKey(defaultValue: 0)
-  int articleId;
-  @JsonKey(defaultValue: 0)
-  int num;
+  @JsonKey(defaultValue: 0, name: "articleId")
+  int bookId;
   @JsonKey(defaultValue: "")
   String chapter;
   @JsonKey(defaultValue: "")
   String content;
-  @JsonKey(defaultValue: "")
-  String src;
   @JsonKey(defaultValue: 0)
-  int addTime;
+  int nextArticleId;
+  @JsonKey(defaultValue: 0)
+  int preArticleId;
 
+  @JsonKey(ignore: true)
   late List<Map<String, int>> pageOffsets;
 
-  Article(
-      {required this.id,
-      required this.articleId,
-      required this.num,
-      required this.chapter,
-      required this.content,
-      required this.src,
-      required this.addTime}) {
+  Article({
+    required this.id,
+    required this.bookId,
+    required this.chapter,
+    required this.content,
+    required this.nextArticleId,
+    required this.preArticleId,
+  }) {
     content = content.replaceAll('<br/>\r\n', '\n');
   }
 

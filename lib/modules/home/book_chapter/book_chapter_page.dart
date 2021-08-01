@@ -13,7 +13,6 @@ import 'book_chapter_controller.dart';
 class BookChapterPage extends GetView<BookChapterController> {
   @override
   Widget build(Object context) {
-    _hideStatusBar();
     RouteModel rm = Get.arguments;
     return GetBuilder<BookChapterController>(
       tag: rm.tag,
@@ -33,8 +32,7 @@ class BookChapterPage extends GetView<BookChapterController> {
                   onTap: () {
                     var param = BookReadParam();
                     param.book = book;
-                    param.chapters = controller.chapters;
-                    param.index = index;
+                    param.chapterId = model.id;
                     Get.toNamed(Routes.bookRead,
                         arguments: RouteModel(
                             tag: "${Routes.bookRead}/${book.id}",
@@ -48,9 +46,5 @@ class BookChapterPage extends GetView<BookChapterController> {
         );
       },
     );
-  }
-
-  _hideStatusBar() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
   }
 }

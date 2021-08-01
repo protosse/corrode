@@ -1,3 +1,4 @@
+import 'package:corrode/modules/home/book_chapter/book_chapter_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -82,9 +83,10 @@ class BookDetailPage extends GetView<BookDetailController> {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
+        var param = BookChapterParam(book: model);
         Get.toNamed(Routes.bookChapter,
             arguments: RouteModel(
-                tag: "${Routes.bookChapter}/${model.id}", param: model));
+                tag: "${Routes.bookChapter}/${model.id}", param: param));
       },
       child: Column(
         children: [
