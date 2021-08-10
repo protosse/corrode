@@ -1,3 +1,4 @@
+import 'package:corrode/models/user.dart';
 import 'package:get/get.dart';
 
 import '../../routes/app_routes.dart';
@@ -8,7 +9,11 @@ class SplashController extends GetxController {
     super.onReady();
 
     Future.delayed(Duration(seconds: 3), () {
-      Get.offAllNamed(Routes.tab);
+      if (User.share() == null) {
+        Get.offAllNamed(Routes.login);
+      } else {
+        Get.offAllNamed(Routes.tab);
+      }
     });
   }
 }

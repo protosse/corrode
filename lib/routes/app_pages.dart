@@ -1,3 +1,5 @@
+import 'package:corrode/modules/login/login_binding.dart';
+import 'package:corrode/modules/login/login_page.dart';
 import 'package:get/get.dart';
 
 import '../modules/home/book_chapter/book_chapter_binding.dart';
@@ -38,6 +40,11 @@ class AppPages {
       name: Routes.bookChapter,
       page: () => BookChapterPage(),
       binding: BookChapterBinding(),
+    ),
+    GetPage(
+      name: Routes.login,
+      page: () => LoginPage(),
+      binding: LoginBinding(),
     ),
   ];
 }

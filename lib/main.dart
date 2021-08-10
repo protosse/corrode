@@ -1,8 +1,10 @@
+import 'package:corrode/util/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'modules/splash/splash_binding.dart';
 import 'modules/splash/splash_page.dart';
@@ -11,6 +13,9 @@ import 'theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Util.sp = await SharedPreferences.getInstance();
+
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: "/",
