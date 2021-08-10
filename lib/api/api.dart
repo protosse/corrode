@@ -1,3 +1,4 @@
+import 'package:corrode/models/article.dart';
 import 'package:dio/dio.dart';
 
 import '../models/book.dart';
@@ -76,6 +77,13 @@ class Api {
     return await request(url: 'article/getCategory').then((value) {
       List d = value.data;
       return d.map((e) => BookCategory.fromJson(e)).toList();
+    });
+  }
+
+  Future<Article> article({required int id}) async {
+    return await request(url: 'article/getChapterContent', params: {"id": id})
+        .then((value) {
+      return Article.fromJson(value.data);
     });
   }
 

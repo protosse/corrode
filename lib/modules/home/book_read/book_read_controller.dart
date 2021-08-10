@@ -12,6 +12,8 @@ import 'book_read_utils.dart';
 
 class BookReadParam {
   late Book book;
+
+  // chapterId就是后面的articleId
   late int chapterId;
 }
 
@@ -103,14 +105,20 @@ class BookReadController extends FullLifeCycleController {
       throw FlutterError("无法找到章节");
     }
     Chapter chapter = chapters[index];
-    Article article = Article(
-      id: 0,
-      bookId: chapter.bookId,
-      chapter: chapter.chapter,
-      content: "chapter.content",
-      nextArticleId: index + 1,
-      preArticleId: index - 1,
-    );
+    Article article = await Api.share.article(id: chapterId);
+    article.bookId = chapter.bookId;
+    article.chapter = chapter.chapter;
+    if (index + 1 <= chapters.length - 1) {
+      article.nextArticleId = chapters[index + 1].id;
+    }else {
+      article.nextArticleId = 0;
+    }
+
+    if (index - 1 > 0 && index - 1 <= chapters.length - 1) {
+      article.preArticleId = chapters[index - 1].id;
+    }else {
+      article.preArticleId = 0;
+    }
 
     var contentHeight = Screen.height -
         topSafeHeight -
