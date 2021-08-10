@@ -1,3 +1,4 @@
+import 'package:corrode/modules/home/book_read/book_read_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +33,7 @@ class BookChapterPage extends GetView<BookChapterController> {
                     var param = BookReadParam();
                     param.book = book;
                     param.chapterId = model.id;
-                    Get.toNamed(Routes.bookRead,
+                    Get.to(BookReadPage(),
                         arguments: RouteModel(
                             tag: "${Routes.bookRead}/${book.id}",
                             param: param));

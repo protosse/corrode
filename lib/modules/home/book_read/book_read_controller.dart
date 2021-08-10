@@ -35,6 +35,8 @@ class BookReadController extends FullLifeCycleController {
 
   double topSafeHeight = 0;
 
+  bool isFirstIn = true;
+
   int get itemCount {
     return (preArticle?.pageCount ?? 0) +
         (currentArticle?.pageCount ?? 0) +
@@ -50,19 +52,13 @@ class BookReadController extends FullLifeCycleController {
   }
 
   @override
-  Future<bool> didPopRoute() {
-    SystemChrome.setEnabledSystemUIOverlays(
-        [SystemUiOverlay.top, SystemUiOverlay.bottom]);
-    return super.didPopRoute();
-  }
-
-  @override
   void dispose() {
     pageController.dispose();
     super.dispose();
   }
 
   setup() async {
+    pageController.addListener(onScroll);
     await SystemChrome.setEnabledSystemUIOverlays([]);
     await Future.delayed(const Duration(milliseconds: 100), () {});
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
@@ -94,8 +90,12 @@ class BookReadController extends FullLifeCycleController {
     }
 
     pageIndex = 0;
-    pageController.jumpToPage(
-        (preArticle != null ? preArticle!.pageCount : 0) + pageIndex);
+    if (!isFirstIn) {
+      pageController.jumpToPage(
+          (preArticle != null ? preArticle!.pageCount : 0) + pageIndex);
+      isFirstIn = false;
+    }
+
     update();
   }
 
@@ -110,13 +110,13 @@ class BookReadController extends FullLifeCycleController {
     article.chapter = chapter.chapter;
     if (index + 1 <= chapters.length - 1) {
       article.nextArticleId = chapters[index + 1].id;
-    }else {
+    } else {
       article.nextArticleId = 0;
     }
 
     if (index - 1 > 0 && index - 1 <= chapters.length - 1) {
       article.preArticleId = chapters[index - 1].id;
-    }else {
+    } else {
       article.preArticleId = 0;
     }
 
