@@ -1,3 +1,4 @@
+import 'package:corrode/components/TimerCountDownWidget.dart';
 import 'package:corrode/util/extensions/color_extension.dart';
 import 'package:flutter/material.dart';
 import 'login_controller.dart';
@@ -55,6 +56,7 @@ class LoginPage extends GetView<LoginController> {
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: TextField(
+                              controller: controller.phoneController,
                               style: TextStyle(fontSize: 14),
                               keyboardType: TextInputType.phone,
                               decoration: InputDecoration(
@@ -90,19 +92,56 @@ class LoginPage extends GetView<LoginController> {
                               children: [
                                 Expanded(
                                   child: TextField(
+                                    controller: controller.codeController,
                                     style: TextStyle(fontSize: 14),
                                     keyboardType: TextInputType.phone,
                                     decoration: InputDecoration(
-                                        hintText: "请输入验证码",
-                                        hintStyle: TextStyle(
-                                          color: HexColor.fromHex("#426B63")
-                                              .withOpacity(0.3),
-                                        ),
-                                        enabledBorder: InputBorder.none),
+                                      hintText: "请输入验证码",
+                                      hintStyle: TextStyle(
+                                        color: HexColor.fromHex("#426B63")
+                                            .withOpacity(0.3),
+                                      ),
+                                      enabledBorder: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 32,
+                                  child: TimerCountDownWidget(
+                                    onTimerFinish: () {},
                                   ),
                                 )
                               ],
                             ),
+                          ),
+                          SizedBox(height: 90),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 44,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text(
+                                      "登录",
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    style: TextButton.styleFrom(
+                                      backgroundColor:
+                                          HexColor.fromHex("#03C19B"),
+                                      primary: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(21),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

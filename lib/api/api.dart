@@ -80,11 +80,24 @@ class Api {
     });
   }
 
+  // 章节内容
   Future<Article> article({required int id}) async {
     return await request(url: 'article/getChapterContent', params: {"id": id})
         .then((value) {
       return Article.fromJson(value.data);
     });
+  }
+
+  // 发送验证码
+  Future<ApiResponse> code({required String phone}) async {
+    return await request(url: 'auth/sendSms', params: {"mobile": phone});
+  }
+
+  // 登录
+  Future<ApiResponse> login(
+      {required String phone, required String code}) async {
+    return await request(
+        url: 'auth/mobileLogin', params: {"mobile": phone, "code": code});
   }
 
   Future<ApiResponse> request(
