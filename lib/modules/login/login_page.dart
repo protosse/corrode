@@ -1,8 +1,10 @@
+import 'package:corrode/api/api.dart';
 import 'package:corrode/components/TimerCountDownWidget.dart';
 import 'package:corrode/util/extensions/color_extension.dart';
 import 'package:flutter/material.dart';
 import 'login_controller.dart';
 import 'package:get/get.dart';
+import '../../util/extensions/future_extension.dart';
 
 class LoginPage extends GetView<LoginController> {
   @override
@@ -110,7 +112,9 @@ class LoginPage extends GetView<LoginController> {
                               child: Container(
                                 height: 44,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    controller.login();
+                                  },
                                   child: Text(
                                     "登录",
                                     style: TextStyle(
@@ -152,8 +156,16 @@ class LoginPage extends GetView<LoginController> {
           return ElevatedButton(
             onPressed: () {
               if (c.countdownTime.value == 0) {
-                c.countdownTime.value = 60;
-                c.startCountdownTimer();
+                var phone = controller.phoneController.text;
+                if (phone.isNotEmpty) {
+                  Api.share
+                      .code(phone: phone)
+                      .toast(success: "发送成功")
+                      .then((value) {
+                    c.countdownTime.value = 60;
+                    c.startCountdownTimer();
+                  });
+                }
               }
             },
             child: Obx(() => Text(
