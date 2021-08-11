@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   get: ^4.1.4
   dio: ^4.0.0
+  fluttertoast: ^8.0.7
   flutter_svprogresshud: ^0.0.7
   pull_to_refresh: ^2.0.0
   focus_detector: ^2.0.0

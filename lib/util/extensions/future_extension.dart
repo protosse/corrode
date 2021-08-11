@@ -1,4 +1,3 @@
-import 'package:flutter_svprogresshud/flutter_svprogresshud.dart';
 import '../util.dart';
 
 extension ToastWhenError<T> on Future<T> {
@@ -23,7 +22,6 @@ extension ToastWhenError<T> on Future<T> {
   }
 
   Future<T> hud() {
-    SVProgressHUD.show();
     Util.showHUD();
     return this.whenComplete(() {
       Util.hideHUD();

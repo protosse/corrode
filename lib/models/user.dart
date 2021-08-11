@@ -17,10 +17,19 @@ class User {
     return _current;
   }
 
+  static login(User user) {
+    _current = user;
+    String str = jsonEncode(user.toJson());
+    Util.sp.setString(DefaultKey.user, str);
+  }
+
   @JsonKey(defaultValue: 0)
   int id;
 
-  User({required this.id});
+  @JsonKey(defaultValue: "", name: "access_token")
+  String accessToken;
+
+  User({required this.id, required this.accessToken});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);

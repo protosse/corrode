@@ -1,4 +1,5 @@
 import 'package:corrode/models/article.dart';
+import 'package:corrode/models/user.dart';
 import 'package:dio/dio.dart';
 
 import '../models/book.dart';
@@ -94,10 +95,12 @@ class Api {
   }
 
   // 登录
-  Future<ApiResponse> login(
-      {required String phone, required String code}) async {
+  Future<User> login({required String phone, required String code}) async {
     return await request(
-        url: 'auth/mobileLogin', params: {"mobile": phone, "code": code});
+        url: 'auth/mobileLogin',
+        params: {"mobile": phone, "code": code}).then((value) {
+      return User.fromJson(value.data);
+    });
   }
 
   Future<ApiResponse> request(
@@ -113,6 +116,11 @@ class Api {
 
     if (params == null) {
       params = {};
+    }
+
+    var user = User.share();
+    if (user != null) {
+      params["access_token"] = user.accessToken;
     }
 
     Response response;

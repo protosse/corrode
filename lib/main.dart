@@ -10,11 +10,13 @@ import 'modules/splash/splash_binding.dart';
 import 'modules/splash/splash_page.dart';
 import 'routes/app_pages.dart';
 import 'theme/app_theme.dart';
+import 'package:flutter_svprogresshud/flutter_svprogresshud.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Util.sp = await SharedPreferences.getInstance();
+  SVProgressHUD.setMinimumDismissTimeInterval(3);
 
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
