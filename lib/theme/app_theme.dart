@@ -1,7 +1,10 @@
+import 'package:corrode/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-ThemeData get appThemeData => ThemeData(
-      primarySwatch: white,
+ThemeData get appThemeData => ThemeData.light().copyWith(
+      // primarySwatch: white,
+      primaryColor: Colours.main,
+      accentColor: Colours.main,
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: appBarTheme,
     );
@@ -9,19 +12,3 @@ ThemeData get appThemeData => ThemeData(
 AppBarTheme get appBarTheme => AppBarTheme(
       elevation: 0,
     );
-
-const MaterialColor white = const MaterialColor(
-  0xFFFFFFFF,
-  const <int, Color>{
-    50: const Color(0xFFFFFFFF),
-    100: const Color(0xFFFFFFFF),
-    200: const Color(0xFFFFFFFF),
-    300: const Color(0xFFFFFFFF),
-    400: const Color(0xFFFFFFFF),
-    500: const Color(0xFFFFFFFF),
-    600: const Color(0xFFFFFFFF),
-    700: const Color(0xFFFFFFFF),
-    800: const Color(0xFFFFFFFF),
-    900: const Color(0xFFFFFFFF),
-  },
-);

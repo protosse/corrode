@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../models/article.dart';
 import '../../../routes/route_model.dart';
-import '../../../util/constants/assets_images.dart';
+import '../../../constants/assets_images.dart';
 import 'book_read_controller.dart';
 import 'components/book_read_view.dart';
 

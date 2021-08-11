@@ -5,7 +5,7 @@ import '../../../models/book.dart';
 import '../../../routes/app_routes.dart';
 import '../../../routes/route_model.dart';
 import '../../../theme/colors.dart';
-import '../../../util/constants/flutter_assets.dart';
+import '../../../constants/flutter_assets.dart';
 import '../book_chapter/book_chapter_controller.dart';
 import 'book_detail_controller.dart';
 
@@ -100,12 +100,12 @@ class BookDetailPage extends GetView<BookDetailController> {
               children: [
                 Text(
                   "查看目录",
-                  style: TextStyle(color: Colours.text_gray),
+                  style: TextStyle(color: Colours.text9),
                 ),
                 Spacer(),
                 Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: Colours.text_gray,
+                  color: Colours.text9,
                   size: 15,
                 )
               ],
@@ -136,7 +136,7 @@ class BookDetailPage extends GetView<BookDetailController> {
               model.intro,
               maxLines: controller.isExpanded ? null : 4,
               overflow: controller.isExpanded ? null : TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 12, color: Colours.text_gray),
+              style: TextStyle(fontSize: 12, color: Colours.text9),
             ),
           ),
         ],
@@ -167,15 +167,15 @@ class BookDetailPage extends GetView<BookDetailController> {
               children: [
                 Text(
                   model.title,
-                  style: TextStyle(fontSize: 18, color: Colours.text_dark),
+                  style: TextStyle(fontSize: 18, color: Colours.text3),
                 ),
                 Text(
                   "作者：${model.author}",
-                  style: TextStyle(fontSize: 12, color: Colours.text_gray),
+                  style: TextStyle(fontSize: 12, color: Colours.text9),
                 ),
                 Text(
                   "分类：${model.catName}",
-                  style: TextStyle(fontSize: 12, color: Colours.text_gray),
+                  style: TextStyle(fontSize: 12, color: Colours.text9),
                 ),
               ],
             ),

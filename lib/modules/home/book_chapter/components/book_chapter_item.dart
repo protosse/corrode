@@ -15,7 +15,7 @@ class BookChapterItem extends StatelessWidget {
       padding: EdgeInsets.all(15),
       child: Text(
         model.chapter,
-        style: TextStyle(fontSize: 14, color: Colours.text_dark),
+        style: TextStyle(fontSize: 14, color: Colours.text3),
       ),
     );
   }

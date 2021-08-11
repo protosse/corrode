@@ -1,3 +1,5 @@
+import 'package:corrode/constants/assets_images.dart';
+import 'package:corrode/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,29 +17,20 @@ class HomePage extends GetView<HomeController> {
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: Scaffold(
-            appBar: AppBar(
-              title: Text("书城"),
-              actions: [
-                IconButton(
-                    onPressed: () => {Get.toNamed(Routes.search)},
-                    icon: Icon(
-                      Icons.search,
-                    ))
-              ],
-            ),
-            body: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            body: SafeArea(
+              child: Column(
+                children: [
+                  Row(
                     children: [
-                      tabBar(),
+                      Expanded(child: tabBar()),
+                      IconButton(
+                          onPressed: () => {Get.toNamed(Routes.search)},
+                          icon: ImageIcon(AssetImages.icFound))
                     ],
                   ),
-                ),
-                Expanded(child: tabBarView())
-              ],
+                  Expanded(child: tabBarView())
+                ],
+              ),
             ),
           ),
         );
@@ -48,11 +41,11 @@ class HomePage extends GetView<HomeController> {
   Widget tabBar() {
     return TabBar(
       isScrollable: true,
-      unselectedLabelColor: Colors.black54,
+      unselectedLabelColor: Colours.text6,
       unselectedLabelStyle: TextStyle(fontSize: 14),
-      labelColor: Colors.black,
-      labelStyle: TextStyle(fontSize: 16),
-      indicatorColor: Colors.black54,
+      labelColor: Colours.text3,
+      labelStyle: TextStyle(fontSize: 14),
+      indicatorColor: Colours.main,
       indicatorSize: TabBarIndicatorSize.label,
       indicatorWeight: 2.0,
       tabs: controller.tabs

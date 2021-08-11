@@ -58,8 +58,12 @@ class Api {
       params["title"] = title;
     }
     return await request(url: 'article/index', params: params).then((value) {
-      List d = value.data;
-      return d.map((e) => Book.fromJson(e)).toList();
+      if (value.data is List) {
+        List d = value.data;
+        return d.map((e) => Book.fromJson(e)).toList();
+      } else {
+        return [];
+      }
     });
   }
 
@@ -68,16 +72,24 @@ class Api {
     return await request(url: 'article/getChapter', params: {
       "article_id": id,
     }).then((value) {
-      List d = value.data;
-      return d.map((e) => Chapter.fromJson(e)).toList();
+      if (value.data is List) {
+        List d = value.data;
+        return d.map((e) => Chapter.fromJson(e)).toList();
+      } else {
+        return [];
+      }
     });
   }
 
   // 分类列表
   Future<List<BookCategory>> categoryList() async {
     return await request(url: 'article/getCategory').then((value) {
-      List d = value.data;
-      return d.map((e) => BookCategory.fromJson(e)).toList();
+      if (value.data is List) {
+        List d = value.data;
+        return d.map((e) => BookCategory.fromJson(e)).toList();
+      } else {
+        return [];
+      }
     });
   }
 

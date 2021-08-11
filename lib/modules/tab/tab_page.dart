@@ -1,3 +1,5 @@
+import 'package:corrode/constants/assets_images.dart';
+import 'package:corrode/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,9 +19,9 @@ class MyTabPage extends GetView<MyTabController> {
             children: [HomePage(), MinePage()],
           ),
           bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor: Colors.grey,
+            unselectedItemColor: Colours.grey,
             unselectedFontSize: 12,
-            selectedItemColor: Colors.blue,
+            selectedItemColor: Colours.main,
             selectedFontSize: 12,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex,
@@ -30,15 +32,18 @@ class MyTabPage extends GetView<MyTabController> {
             elevation: 0,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.home),
+                icon: ImageIcon(AssetImages.tabIcBookstore),
+                activeIcon: ImageIcon(AssetImages.tabIcBookstoreS),
                 label: '书城',
               ),
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.book),
+                icon: ImageIcon(AssetImages.tabIcBookcase),
+                activeIcon: ImageIcon(AssetImages.tabIcBookcaseS),
                 label: '书架',
               ),
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.person),
+                icon: ImageIcon(AssetImages.tabIcPersonalcenter),
+                activeIcon: ImageIcon(AssetImages.tabIcPersonalcenterS),
                 label: '我的',
               ),
             ],

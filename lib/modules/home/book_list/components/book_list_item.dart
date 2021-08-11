@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../models/book.dart';
 import '../../../../theme/colors.dart';
-import '../../../../util/constants/flutter_assets.dart';
+import '../../../../constants/flutter_assets.dart';
 
 class BookListItem extends StatelessWidget {
   final Book model;
@@ -12,8 +12,8 @@ class BookListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 115,
-      padding: EdgeInsets.all(10),
+      height: 170,
+      padding: EdgeInsets.only(top: 30, left: 15, right: 15),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,17 +34,17 @@ class BookListItem extends StatelessWidget {
               children: [
                 Text(
                   model.title,
-                  style: TextStyle(fontSize: 14, color: Colours.text_dark),
+                  style: TextStyle(fontSize: 14, color: Colours.text3),
                 ),
                 Text(
                   "作者：${model.author}",
-                  style: TextStyle(fontSize: 12, color: Colours.text_gray),
+                  style: TextStyle(fontSize: 12, color: Colours.text9),
                 ),
                 Text(
                   model.intro,
                   maxLines: 4,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 12, color: Colours.text_gray),
+                  style: TextStyle(fontSize: 12, color: Colours.text9),
                 ),
               ],
             ),
