@@ -84,7 +84,7 @@ class LoadStateView extends StatelessWidget {
           onRefresh: () => state.request(),
           onLoading: () => state.request(pullDown: false),
           child:
-              enableEmpty && state.dataSource.isEmpty ? EmptyWidget() : child,
+              (enableEmpty && state.dataSource.isEmpty) ? EmptyWidget() : child,
         );
       } else {
         return child;

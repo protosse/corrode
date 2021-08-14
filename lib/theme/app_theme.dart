@@ -2,13 +2,18 @@ import 'package:corrode/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 ThemeData get appThemeData => ThemeData.light().copyWith(
-      // primarySwatch: white,
+      colorScheme: ThemeData.light().colorScheme.copyWith(
+            primary: Colours.main,
+            secondary: Colours.main,
+          ),
       primaryColor: Colours.main,
       accentColor: Colours.main,
+      highlightColor: Colours.main,
       scaffoldBackgroundColor: Colors.white,
-      appBarTheme: appBarTheme,
-    );
-
-AppBarTheme get appBarTheme => AppBarTheme(
-      elevation: 0,
+      appBarTheme: ThemeData.light().appBarTheme.copyWith(
+            elevation: 0,
+          ),
+      textSelectionTheme: ThemeData.light().textSelectionTheme.copyWith(
+            cursorColor: Colours.main,
+          ),
     );

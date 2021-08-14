@@ -7,6 +7,7 @@ class Colours {
 
   static const Color text3 = Color(0xFF333333);
   static const Color text6 = Color(0xFF666666);
+  static const Color text8 = Color(0xFF888888);
   static const Color text9 = Color(0xFF999999);
 
   static const Color divider = Color(0xffe5e5e5);
