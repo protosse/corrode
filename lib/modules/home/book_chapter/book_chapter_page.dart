@@ -28,7 +28,7 @@ class BookChapterPage extends GetView<BookChapterController> {
                 Book book = controller.param.book;
                 Chapter model = controller.chapters[index];
                 return GestureDetector(
-                  behavior: HitTestBehavior.translucent,
+                  behavior: HitTestBehavior.opaque,
                   onTap: () {
                     var param = BookReadParam();
                     param.book = book;

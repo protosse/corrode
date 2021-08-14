@@ -29,4 +29,5 @@ class Util {
 class DefaultKey {
   static String user = "currentUser";
   static String loginPhone = "loginPhone";
+  static String searchHistory = 'searchHistory';
 }

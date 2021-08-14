@@ -26,7 +26,7 @@ class SearchPage extends GetView<SearchController> {
             backgroundColor: Colors.white,
             title: _searchView(),
           ),
-          body: _historyView(),
+          body: controller.isShowHistoryView ? _historyView() : _itemView(),
         );
       },
     );
@@ -37,13 +37,23 @@ class SearchPage extends GetView<SearchController> {
       color: HexColor.fromHex("#F4F8F7"),
       padding: EdgeInsets.only(top: 10),
       child: Container(
+        padding: EdgeInsets.only(left: 15, right: 15),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Text("搜索记录"),
+                Spacer(),
+                IconButton(
+                  icon: ImageIcon(AssetImages.icDel),
+                  onPressed: () {
+                    controller.clearTags();
+                  },
+                )
               ],
-            )
+            ),
+            _tagsView(),
           ],
         ),
         decoration: BoxDecoration(
@@ -60,7 +70,6 @@ class SearchPage extends GetView<SearchController> {
   Widget _itemView() {
     return LoadStateView(
       enablePullDown: false,
-      enableEmpty: false,
       state: controller,
       child: ListView.builder(
           itemCount: controller.dataSource.length,
@@ -85,6 +94,7 @@ class SearchPage extends GetView<SearchController> {
     return Container(
         height: 35,
         child: TextField(
+          controller: controller.textController,
           cursorColor: Colours.main,
           style: TextStyle(fontSize: 14),
           decoration: InputDecoration(
@@ -127,5 +137,35 @@ class SearchPage extends GetView<SearchController> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: HexColor.fromHex("#f4f8f7")));
+  }
+
+  Widget _tagsView() {
+    return Obx(() => Wrap(
+          spacing: 12,
+          children: (controller.tags)
+              .map((e) => GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      controller.textController.text = e;
+                      controller.request();
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+                      child: Text(
+                        e,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colours.text3,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: HexColor.fromHex("#F7FAF9")),
+                    ),
+                  ))
+              .toList(),
+        ));
   }
 }
