@@ -1,7 +1,7 @@
 import 'package:corrode/constants/assets_images.dart';
 import 'package:corrode/models/book.dart';
 import 'package:corrode/modules/home/book_detail/book_detail_controller.dart';
-import 'package:corrode/modules/home/book_list/components/book_list_item.dart';
+import 'package:corrode/modules/home/book_list/widgets/book_list_item.dart';
 import 'package:corrode/routes/app_routes.dart';
 import 'package:corrode/routes/route_model.dart';
 import 'package:corrode/theme/colors.dart';

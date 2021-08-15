@@ -18,6 +18,8 @@ class BookChapterController extends GetxController {
 
   List<Chapter> chapters = [];
 
+  var isDescend = true;
+
   @override
   void onReady() {
     super.onReady();
@@ -31,5 +33,11 @@ class BookChapterController extends GetxController {
     }).whenComplete(() {
       update();
     });
+  }
+
+  reverseSort() {
+    isDescend = !isDescend;
+    chapters = List.from(chapters.reversed);
+    update();
   }
 }

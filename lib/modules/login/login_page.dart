@@ -1,5 +1,5 @@
 import 'package:corrode/api/api.dart';
-import 'package:corrode/components/TimerCountDownWidget.dart';
+import 'package:corrode/widgets/TimerCountDownWidget.dart';
 import 'package:corrode/util/extensions/color_extension.dart';
 import 'package:corrode/util/util.dart';
 import 'package:flutter/material.dart';

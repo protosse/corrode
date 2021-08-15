@@ -117,7 +117,7 @@ class Api {
 
   Future<ApiResponse> request(
       {required String url,
-      params,
+      Map<String, dynamic>? params,
       Map<String, dynamic>? queryParameters,
       Options? option}) async {
     url = prefix + url;

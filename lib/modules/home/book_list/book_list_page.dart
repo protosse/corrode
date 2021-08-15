@@ -11,7 +11,7 @@ import '../../../routes/app_routes.dart';
 import '../../../routes/route_model.dart';
 import '../../../util/loadState/load_state.dart';
 import 'book_list_controller.dart';
-import 'components/book_list_item.dart';
+import 'widgets/book_list_item.dart';
 
 class BookListPage extends GetView<BookListController> {
   final BookCategory category;
