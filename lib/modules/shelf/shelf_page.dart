@@ -158,7 +158,7 @@ class ShelfPage extends GetView<ShelfController> {
             child: IconButton(
               padding: EdgeInsets.all(0),
               onPressed: () => controller.toggleEdit(),
-              icon: ImageIcon(AssetImage("assets/images/ic_edit.png")),
+              icon: ImageIcon(AssetImages.icEdit),
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
             ),
