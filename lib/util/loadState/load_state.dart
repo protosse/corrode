@@ -62,21 +62,23 @@ class LoadStateView extends StatelessWidget {
   final bool enablePullDown;
   final bool enablePullUp;
   final bool enableEmpty;
+  final Widget? emptyWidget;
 
   LoadStateView(
       {required this.state,
       required this.child,
       this.enablePullDown = true,
       this.enablePullUp = true,
-      this.enableEmpty = true});
+      this.enableEmpty = true,
+      this.emptyWidget});
 
   @override
   Widget build(BuildContext context) {
     if (state.isFirstLoad) {
       if (state.isFirstLoadError) {
-        return ErrorReload(onTap: () => state.request());
+        return ErrorReloadWidget(onTap: () => state.request());
       } else {
-        return Loading();
+        return LoadingWidget();
       }
     } else {
       if (enablePullDown || enablePullUp) {
@@ -86,8 +88,9 @@ class LoadStateView extends StatelessWidget {
           controller: state.refreshController,
           onRefresh: () => state.request(),
           onLoading: () => state.request(pullDown: false),
-          child:
-              (enableEmpty && state.dataSource.isEmpty) ? EmptyWidget() : child,
+          child: (enableEmpty && state.dataSource.isEmpty)
+              ? (emptyWidget ?? EmptyWidget())
+              : child,
         );
       } else {
         return child;

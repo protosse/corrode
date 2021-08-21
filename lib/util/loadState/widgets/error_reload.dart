@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ErrorReload extends StatelessWidget {
+class ErrorReloadWidget extends StatelessWidget {
   final String text;
   final VoidCallback? onTap;
 
-  ErrorReload({this.text = "", this.onTap});
+  ErrorReloadWidget({this.text = "", this.onTap});
 
   @override
   Widget build(BuildContext context) {

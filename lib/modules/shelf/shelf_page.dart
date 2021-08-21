@@ -3,6 +3,7 @@ import 'package:corrode/constants/assets_images.dart';
 import 'package:corrode/models/book.dart';
 import 'package:corrode/modules/home/book_read/book_read_controller.dart';
 import 'package:corrode/modules/home/book_read/book_read_page.dart';
+import 'package:corrode/modules/tab/tab_controller.dart';
 import 'package:corrode/routes/app_routes.dart';
 import 'package:corrode/routes/route_model.dart';
 import 'package:corrode/util/loadState/load_state.dart';
@@ -10,6 +11,7 @@ import 'package:corrode/util/screen.dart';
 import 'package:corrode/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'components/shelf_empty.dart';
 import 'shelf_controller.dart';
 import 'package:get/get.dart';
 
@@ -28,6 +30,12 @@ class ShelfPage extends GetView<ShelfController> {
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   child: LoadStateView(
                     state: controller,
+                    emptyWidget: ShelfEmptyWidget(
+                      onTap: () {
+                        MyTabController c = Get.find();
+                        c.changeTabIndex(0);
+                      },
+                    ),
                     child: GridView.count(
                       crossAxisCount: 3,
                       mainAxisSpacing: 20.w,
@@ -137,7 +145,7 @@ class ShelfPage extends GetView<ShelfController> {
             height: 15,
             child: IconButton(
               padding: EdgeInsets.all(0),
-              onPressed: () => controller.toggleEdit(),
+              onPressed: () => Get.toNamed(Routes.search),
               icon: ImageIcon(AssetImages.icFound),
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
