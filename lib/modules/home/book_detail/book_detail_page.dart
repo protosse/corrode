@@ -1,7 +1,11 @@
 import 'dart:io';
 
 import 'package:corrode/modules/home/book_chapter/book_chapter_page.dart';
+import 'package:corrode/modules/home/book_read/book_read_controller.dart';
+import 'package:corrode/modules/home/book_read/book_read_page.dart';
+import 'package:corrode/routes/app_routes.dart';
 import 'package:corrode/util/extensions/color_extension.dart';
+import 'package:corrode/widgets/flutter_simple_rating_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -56,7 +60,7 @@ class BookDetailPage extends GetView<BookDetailController> {
                                 Padding(
                                   padding:
                                       EdgeInsets.only(top: 20.h, bottom: 47.h),
-                                  child: _starAndReadView(),
+                                  child: _starAndReadView(model),
                                 ),
                                 _infoView(controller, model),
                                 SizedBox(height: 20.h)
@@ -68,7 +72,7 @@ class BookDetailPage extends GetView<BookDetailController> {
                     ),
                   ),
                   Builder(builder: (context) {
-                    return _bottomView(context, model);
+                    return _bottomView(context, controller, model);
                   })
                 ],
               ),
@@ -82,7 +86,7 @@ class BookDetailPage extends GetView<BookDetailController> {
     );
   }
 
-  Row _starAndReadView() {
+  Widget _starAndReadView(Book model) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -91,7 +95,7 @@ class BookDetailPage extends GetView<BookDetailController> {
             Row(
               children: [
                 Text(
-                  "7.5",
+                  model.score,
                   style: TextStyle(
                       color: Colours.text6,
                       fontSize: 20,
@@ -107,14 +111,18 @@ class BookDetailPage extends GetView<BookDetailController> {
               ],
             ),
             SizedBox(height: 8.h),
-            Row(
-              children: [
-                Image(image: AssetImages.icStar),
-                Image(image: AssetImages.icStar),
-                Image(image: AssetImages.icStar),
-                Image(image: AssetImages.icStar),
-                Image(image: AssetImages.icStar),
-              ],
+            RatingBar(
+              rating: double.parse(model.score) / 2,
+              icon: Icon(
+                Icons.star,
+                size: 10,
+                color: Colors.grey,
+              ),
+              starCount: 5,
+              spacing: 2,
+              size: 5,
+              allowHalfRating: true,
+              color: Colors.amber,
             )
           ],
         ),
@@ -128,7 +136,7 @@ class BookDetailPage extends GetView<BookDetailController> {
             Row(
               children: [
                 Text(
-                  "7.5",
+                  "${model.read}",
                   style: TextStyle(
                       color: Colours.text6,
                       fontSize: 20,
@@ -164,12 +172,12 @@ class BookDetailPage extends GetView<BookDetailController> {
           Container(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
-              child: FadeInImage(
+              child: FadeInImage.assetNetwork(
                 width: 182.w,
                 height: 235.h,
                 fit: BoxFit.cover,
-                placeholder: AssetImages.defaultPlaceholder,
-                image: AssetImages.defaultPlaceholder,
+                placeholder: Assets.defaultPlaceholder,
+                image: model.cover,
                 // image: NetworkImage(model.img),
               ),
             ),
@@ -204,7 +212,8 @@ class BookDetailPage extends GetView<BookDetailController> {
     );
   }
 
-  Container _bottomView(BuildContext context, Book model) {
+  Container _bottomView(
+      BuildContext context, BookDetailController controller, Book book) {
     return Container(
       color: Colors.white,
       height: 70.h,
@@ -235,27 +244,37 @@ class BookDetailPage extends GetView<BookDetailController> {
           ),
           SizedBox(width: 10),
           Expanded(
-            child: Container(
-              child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "加入书架",
-                    style: TextStyle(
-                        color: Colours.text6,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  )),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: HexColor.fromHex("#DDDDDD"),
-              ),
-            ),
+            child: Obx(() => Container(
+                  child: TextButton(
+                      onPressed: () {
+                        controller.toggleShelf();
+                      },
+                      child: Text(
+                        controller.isCollected.value ? "已加入" : "加入书架",
+                        style: TextStyle(
+                            color: Colours.text6,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      )),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: HexColor.fromHex("#DDDDDD"),
+                  ),
+                )),
           ),
           SizedBox(width: 10),
           Expanded(
             child: Container(
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    var param = BookReadParam();
+                    param.book = book;
+                    Get.back();
+                    Get.to(BookReadPage(),
+                        arguments: RouteModel(
+                            tag: "${Routes.bookRead}/${book.id}",
+                            param: param));
+                  },
                   child: Text(
                     "开始阅读",
                     style: TextStyle(
@@ -295,7 +314,7 @@ class BookDetailPage extends GetView<BookDetailController> {
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
-              _tags(["都市", "连载"])
+              _tags([model.catName, "连载"])
             ],
           ),
           Padding(padding: EdgeInsets.only(top: 8)),
@@ -319,6 +338,7 @@ class BookDetailPage extends GetView<BookDetailController> {
     return Wrap(
       spacing: 4,
       children: (tags)
+          .where((element) => element.isNotEmpty)
           .map((e) => Container(
               padding: EdgeInsets.symmetric(horizontal: 6, vertical: 0),
               child: Text(

@@ -1,4 +1,5 @@
 import 'package:corrode/constants/assets_images.dart';
+import 'package:corrode/modules/shelf/shelf_page.dart';
 import 'package:corrode/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyTabPage extends GetView<MyTabController> {
         return Scaffold(
           body: IndexedStack(
             index: controller.tabIndex,
-            children: [HomePage(), MinePage()],
+            children: [HomePage(), ShelfPage(), MinePage()],
           ),
           bottomNavigationBar: BottomNavigationBar(
             unselectedItemColor: Colours.grey,

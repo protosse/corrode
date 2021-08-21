@@ -21,7 +21,10 @@ mixin LoadState {
   request({bool pullDown = true}) {
     _pullDown = pullDown;
     if (pullDown) {
+      page = 1;
       dataSource.clear();
+    } else {
+      page += 1;
     }
   }
 

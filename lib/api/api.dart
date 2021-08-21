@@ -115,6 +115,30 @@ class Api {
     });
   }
 
+  Future<ApiResponse> addShelf({required int id}) async {
+    return await request(url: 'user/addBookshelf', params: {"article_id": id});
+  }
+
+  Future<ApiResponse> deleteShelf({required int id}) async {
+    return await request(url: 'user/delBookshelf', params: {"article_id": id});
+  }
+
+  Future<List<Book>> shelfList(
+      {required int page, required int perPage}) async {
+    Map<String, dynamic> params = {
+      "page": page,
+      "limit": perPage,
+    };
+    return await request(url: 'user/bookshelf', params: params).then((value) {
+      if (value.data is List) {
+        List d = value.data;
+        return d.map((e) => Book.fromJson(e)).toList();
+      } else {
+        return [];
+      }
+    });
+  }
+
   Future<ApiResponse> request(
       {required String url,
       Map<String, dynamic>? params,
@@ -130,9 +154,13 @@ class Api {
       params = {};
     }
 
+    if (option.headers == null) {
+      option.headers = {};
+    }
+
     var user = User.share();
     if (user != null) {
-      params["access_token"] = user.accessToken;
+      option.headers?["access-token"] = user.accessToken;
     }
 
     Response response;

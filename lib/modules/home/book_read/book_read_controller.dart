@@ -14,7 +14,7 @@ class BookReadParam {
   late Book book;
 
   // chapterId就是后面的articleId
-  late int chapterId;
+  int? chapterId;
 }
 
 class BookReadController extends FullLifeCycleController {
@@ -65,7 +65,14 @@ class BookReadController extends FullLifeCycleController {
     topSafeHeight = Screen.topSafeHeight;
 
     await fetchChapters();
-    await resetContent(param.chapterId);
+    var chapterId = param.chapterId;
+    if (chapterId == null && chapters.isNotEmpty) {
+      chapterId = chapters.first.id;
+    }
+
+    if (chapterId != null) {
+      await resetContent(chapterId);
+    }
   }
 
   fetchChapters() async {

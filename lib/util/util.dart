@@ -1,4 +1,5 @@
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_svprogresshud/flutter_svprogresshud.dart';
 
@@ -31,3 +32,5 @@ class DefaultKey {
   static String loginPhone = "loginPhone";
   static String searchHistory = 'searchHistory';
 }
+
+var logger = Logger();

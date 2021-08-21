@@ -24,8 +24,11 @@ class HomePage extends GetView<HomeController> {
                     children: [
                       Expanded(child: tabBar()),
                       IconButton(
-                          onPressed: () => {Get.toNamed(Routes.search)},
-                          icon: ImageIcon(AssetImages.icFound))
+                        onPressed: () => {Get.toNamed(Routes.search)},
+                        icon: ImageIcon(AssetImages.icFound),
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                      )
                     ],
                   ),
                   Expanded(child: tabBarView())

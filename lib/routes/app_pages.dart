@@ -1,5 +1,7 @@
 import 'package:corrode/modules/login/login_binding.dart';
 import 'package:corrode/modules/login/login_page.dart';
+import 'package:corrode/modules/shelf/shelf_binding.dart';
+import 'package:corrode/modules/shelf/shelf_page.dart';
 import 'package:get/get.dart';
 
 import '../modules/home/book_chapter/book_chapter_binding.dart';
@@ -45,6 +47,11 @@ class AppPages {
       name: Routes.login,
       page: () => LoginPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: Routes.shelf,
+      page: () => ShelfPage(),
+      binding: ShelfBinding(),
     ),
   ];
 }

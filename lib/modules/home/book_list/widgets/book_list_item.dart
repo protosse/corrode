@@ -50,12 +50,12 @@ class BookListItem extends StatelessWidget {
           Container(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
-              child: FadeInImage(
+              child: FadeInImage.assetNetwork(
                 width: 97.w,
                 height: 125.h,
                 fit: BoxFit.cover,
-                placeholder: AssetImages.defaultPlaceholder,
-                image: AssetImages.defaultPlaceholder,
+                placeholder: Assets.defaultPlaceholder,
+                image: model.cover,
                 // image: NetworkImage(model.img),
               ),
             ),
@@ -93,7 +93,7 @@ class BookListItem extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "9.7",
+                        model.score,
                         style: TextStyle(
                             fontSize: 12,
                             color: HexColor.fromHex("#FD971B"),
@@ -102,7 +102,7 @@ class BookListItem extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 4.h),
-                  _tags(["都市"]),
+                  _tags([model.catName]),
                   Text(
                     model.intro,
                     maxLines: 3,
@@ -121,7 +121,7 @@ class BookListItem extends StatelessWidget {
   Widget _tags(List<String> tags) {
     return Wrap(
       spacing: 4,
-      children: (tags)
+      children: tags.where((element) => element.isNotEmpty)
           .map((e) => Container(
               padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               child: Text(

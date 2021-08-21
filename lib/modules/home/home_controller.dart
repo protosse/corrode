@@ -6,6 +6,8 @@ import '../../models/book.dart';
 import '../../models/book_category.dart';
 import '../../util/loadState/load_state.dart';
 
+import '../../../util/extensions/future_extension.dart';
+
 class HomeController extends GetxController
     with SingleGetTickerProviderMixin, LoadState {
   late TabController tabController;
@@ -30,7 +32,7 @@ class HomeController extends GetxController
     var home = Api.share.bookList(page: page, perPage: perPage);
     var category = Api.share.categoryList();
 
-    Future.wait([home, category]).then((value) {
+    Future.wait([home, category]).toastWhenError().then((value) {
       isFirstLoad = false;
       tabs = value[1] as List<BookCategory>;
       tabs.insert(0, BookCategory.all());
