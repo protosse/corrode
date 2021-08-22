@@ -1,4 +1,5 @@
 import 'package:corrode/api/api.dart';
+import 'package:corrode/theme/colors.dart';
 import 'package:corrode/widgets/TimerCountDownWidget.dart';
 import 'package:corrode/util/extensions/color_extension.dart';
 import 'package:corrode/util/util.dart';
@@ -14,7 +15,14 @@ class LoginPage extends GetView<LoginController> {
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("登录"),
+            title: Text(
+              "登录",
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colours.text3),
+            ),
+            backgroundColor: Colors.white,
           ),
           body: SafeArea(
             child: Container(
