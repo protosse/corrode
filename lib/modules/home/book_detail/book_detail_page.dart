@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:corrode/modules/home/book_chapter/book_chapter_page.dart';
 import 'package:corrode/modules/home/book_read/book_read_controller.dart';
 import 'package:corrode/modules/home/book_read/book_read_page.dart';
@@ -112,7 +113,7 @@ class BookDetailPage extends GetView<BookDetailController> {
             ),
             SizedBox(height: 8.h),
             RatingBar(
-              rating: double.parse(model.score) / 2,
+              rating: (double.tryParse(model.score) ?? 0) / 2,
               icon: Icon(
                 Icons.star,
                 size: 10,
@@ -172,13 +173,15 @@ class BookDetailPage extends GetView<BookDetailController> {
           Container(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
-              child: FadeInImage.assetNetwork(
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
                 width: 182.w,
                 height: 235.h,
-                fit: BoxFit.cover,
-                placeholder: Assets.defaultPlaceholder,
-                image: model.cover,
-                // image: NetworkImage(model.img),
+                imageUrl: model.cover,
+                placeholder: (context, url) => Image(
+                  image: AssetImages.defaultPlaceholder,
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
             decoration: BoxDecoration(boxShadow: [

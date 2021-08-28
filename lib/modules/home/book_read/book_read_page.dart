@@ -1,3 +1,5 @@
+import 'package:corrode/models/chapter.dart';
+import 'package:corrode/modules/home/book_read/components/book_read_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:focus_detector/focus_detector.dart';
@@ -38,6 +40,7 @@ class BookReadPage extends StatelessWidget {
                     fit: BoxFit.cover,
                   )),
                   buildPageView(controller),
+                  buildMenu(controller),
                 ],
               ),
             ),
@@ -92,6 +95,22 @@ class BookReadPage extends StatelessWidget {
           article: article,
           page: page,
           topSafeHeight: controller.topSafeHeight),
+    );
+  }
+
+  buildMenu(BookReadController controller) {
+    if (!controller.isMenuVisible) {
+      return Container();
+    }
+    return BookReadMenu(
+      chapters: controller.chapters,
+      articleIndex: controller.currentArticle?.index ?? 0,
+      onTap: () => controller.hideMenu(),
+      onPreviousArticle: () => controller.resetPre(),
+      onNextArticle: () => controller.resetNext(),
+      onToggleChapter: (Chapter chaper) {
+        controller.resetContent(chaper.id);
+      },
     );
   }
 }

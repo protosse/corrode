@@ -18,6 +18,9 @@ class Article {
   int preArticleId;
 
   @JsonKey(ignore: true)
+  late int index;
+
+  @JsonKey(ignore: true)
   late List<Map<String, int>> pageOffsets;
 
   Article({

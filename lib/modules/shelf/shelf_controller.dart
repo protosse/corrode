@@ -4,7 +4,8 @@ import 'package:corrode/util/loadState/load_state.dart';
 import '../../../util/extensions/future_extension.dart';
 import 'package:get/get.dart';
 
-class ShelfController extends GetxController with LoadState {
+class ShelfController extends GetxController
+    with SingleGetTickerProviderMixin, LoadState {
   var isEdit = false;
   var isSelectedAll = false;
   List<Book> selectedItem = [];
@@ -21,7 +22,6 @@ class ShelfController extends GetxController with LoadState {
     if (pullDown) {
       selectedItem = [];
       isSelectedAll = false;
-      update();
     }
     Api.share
         .shelfList(page: page, perPage: perPage)

@@ -80,6 +80,10 @@ class BookReadController extends FullLifeCycleController {
     chapters = await Api.share.chapterList(id: id).toastWhenError();
   }
 
+  resetPre() async {}
+
+  resetNext() async {}
+
   resetContent(int articleId) async {
     currentArticle = await fetchArticle(articleId);
     if (currentArticle == null) {
@@ -115,6 +119,7 @@ class BookReadController extends FullLifeCycleController {
     Article article = await Api.share.article(id: chapterId);
     article.bookId = chapter.bookId;
     article.chapter = chapter.chapter;
+    article.index = chapter.index;
     if (index + 1 <= chapters.length - 1) {
       article.nextArticleId = chapters[index + 1].id;
     } else {
@@ -159,6 +164,12 @@ class BookReadController extends FullLifeCycleController {
     }
     //TODO: isLoading
     preArticle = await fetchArticle(currentArticle!.preArticleId);
+    update();
+  }
+
+  hideMenu() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    this.isMenuVisible = false;
     update();
   }
 

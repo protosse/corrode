@@ -74,7 +74,15 @@ class Api {
     }).then((value) {
       if (value.data is List) {
         List d = value.data;
-        return d.map((e) => Chapter.fromJson(e)).toList();
+        return d
+            .asMap()
+            .map((key, value) {
+              var model = Chapter.fromJson(value);
+              model.index = key;
+              return MapEntry(key, model);
+            })
+            .values
+            .toList();
       } else {
         return [];
       }

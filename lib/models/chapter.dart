@@ -10,6 +10,8 @@ class Chapter {
   int bookId;
   @JsonKey(defaultValue: "")
   String chapter;
+  @JsonKey(ignore: true)
+  late int index;
 
   Chapter({
     required this.id,

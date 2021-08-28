@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:corrode/util/extensions/color_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -50,13 +51,16 @@ class BookListItem extends StatelessWidget {
           Container(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
-              child: FadeInImage.assetNetwork(
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
                 width: 97.w,
                 height: 125.h,
-                fit: BoxFit.cover,
-                placeholder: Assets.defaultPlaceholder,
-                image: model.cover,
-                // image: NetworkImage(model.img),
+                imageUrl: model.cover,
+                placeholder: (context, url) => Image(
+                  fit: BoxFit.cover,
+                  image: AssetImages.defaultPlaceholder,
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
             decoration: BoxDecoration(boxShadow: [
@@ -121,7 +125,8 @@ class BookListItem extends StatelessWidget {
   Widget _tags(List<String> tags) {
     return Wrap(
       spacing: 4,
-      children: tags.where((element) => element.isNotEmpty)
+      children: tags
+          .where((element) => element.isNotEmpty)
           .map((e) => Container(
               padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               child: Text(
