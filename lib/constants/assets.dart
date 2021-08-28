@@ -85,6 +85,62 @@ class Assets {
   /// read_bg
   static  String readBg = "assets/images/read_bg.png";
 
+  /// Assets for readPubBackGray
+  /// read/pub_back_gray
+  static  String readPubBackGray = "assets/images/read/pub_back_gray.png";
+
+  /// Assets for readPubBackWhite
+  /// read/pub_back_white
+  static  String readPubBackWhite = "assets/images/read/pub_back_white.png";
+
+  /// Assets for readReadBg
+  /// read/read_bg
+  static  String readReadBg = "assets/images/read/read_bg.png";
+
+  /// Assets for readReadIconBrightness
+  /// read/read_icon_brightness
+  static  String readReadIconBrightness = "assets/images/read/read_icon_brightness.png";
+
+  /// Assets for readReadIconCatalog
+  /// read/read_icon_catalog
+  static  String readReadIconCatalog = "assets/images/read/read_icon_catalog.png";
+
+  /// Assets for readReadIconChapterNext
+  /// read/read_icon_chapter_next
+  static  String readReadIconChapterNext = "assets/images/read/read_icon_chapter_next.png";
+
+  /// Assets for readReadIconChapterPrevious
+  /// read/read_icon_chapter_previous
+  static  String readReadIconChapterPrevious = "assets/images/read/read_icon_chapter_previous.png";
+
+  /// Assets for readReadIconFont
+  /// read/read_icon_font
+  static  String readReadIconFont = "assets/images/read/read_icon_font.png";
+
+  /// Assets for readReadIconMore
+  /// read/read_icon_more
+  static  String readReadIconMore = "assets/images/read/read_icon_more.png";
+
+  /// Assets for readReadIconSetting
+  /// read/read_icon_setting
+  static  String readReadIconSetting = "assets/images/read/read_icon_setting.png";
+
+  /// Assets for readReadIconVip
+  /// read/read_icon_vip
+  static  String readReadIconVip = "assets/images/read/read_icon_vip.png";
+
+  /// Assets for readReadIconVoice
+  /// read/read_icon_voice
+  static  String readReadIconVoice = "assets/images/read/read_icon_voice.png";
+
+  /// Assets for readReadMoreDetail
+  /// read/read_more_detail
+  static  String readReadMoreDetail = "assets/images/read/read_more_detail.png";
+
+  /// Assets for readReaderBattery
+  /// read/reader_battery
+  static  String readReaderBattery = "assets/images/read/reader_battery.png";
+
   /// Assets for tabIcBookcase
   /// tab/ic_bookcase
   static  String tabIcBookcase = "assets/images/tab/ic_bookcase.png";

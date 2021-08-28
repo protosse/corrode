@@ -15,7 +15,7 @@ class HomePage extends GetView<HomeController> {
     return GetBuilder<HomeController>(
       builder: (_) {
         return AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
+          value: SystemUiOverlayStyle.dark,
           child: Scaffold(
             body: SafeArea(
               child: Column(

@@ -1,3 +1,4 @@
+import 'package:corrode/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -171,6 +172,31 @@ class BookReadController extends FullLifeCycleController {
     SystemChrome.setEnabledSystemUIOverlays([]);
     this.isMenuVisible = false;
     update();
+  }
+
+  tap(Offset position) {
+    double xRate = position.dx / Screen.width;
+    if (xRate > 0.33 && xRate < 0.66) {
+      SystemChrome.setEnabledSystemUIOverlays(
+          [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+      isMenuVisible = true;
+      update();
+    } else if (xRate >= 0.66) {
+      if (pageIndex == 0 && currentArticle?.preArticleId == 0) {
+        Util.showInfo("已经是第一页了");
+        return;
+      }
+      pageController.previousPage(
+          duration: Duration(microseconds: 250), curve: Curves.easeOut);
+    } else {
+      if (pageIndex >= (currentArticle?.pageCount ?? 0) - 1 &&
+          currentArticle?.nextArticleId == 0) {
+        Util.showInfo("已经是最后一页了");
+        return;
+      }
+      pageController.nextPage(
+          duration: Duration(microseconds: 250), curve: Curves.easeOut);
+    }
   }
 
   onScroll() {

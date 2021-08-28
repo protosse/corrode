@@ -88,6 +88,62 @@ class AssetImages {
   /// read_bg
   static  AssetImage get readBg =>  AssetImage(Assets.readBg);
 
+  /// Assets for readPubBackGray
+  /// read/pub_back_gray
+  static  AssetImage get readPubBackGray =>  AssetImage(Assets.readPubBackGray);
+
+  /// Assets for readPubBackWhite
+  /// read/pub_back_white
+  static  AssetImage get readPubBackWhite =>  AssetImage(Assets.readPubBackWhite);
+
+  /// Assets for readReadBg
+  /// read/read_bg
+  static  AssetImage get readReadBg =>  AssetImage(Assets.readReadBg);
+
+  /// Assets for readReadIconBrightness
+  /// read/read_icon_brightness
+  static  AssetImage get readReadIconBrightness =>  AssetImage(Assets.readReadIconBrightness);
+
+  /// Assets for readReadIconCatalog
+  /// read/read_icon_catalog
+  static  AssetImage get readReadIconCatalog =>  AssetImage(Assets.readReadIconCatalog);
+
+  /// Assets for readReadIconChapterNext
+  /// read/read_icon_chapter_next
+  static  AssetImage get readReadIconChapterNext =>  AssetImage(Assets.readReadIconChapterNext);
+
+  /// Assets for readReadIconChapterPrevious
+  /// read/read_icon_chapter_previous
+  static  AssetImage get readReadIconChapterPrevious =>  AssetImage(Assets.readReadIconChapterPrevious);
+
+  /// Assets for readReadIconFont
+  /// read/read_icon_font
+  static  AssetImage get readReadIconFont =>  AssetImage(Assets.readReadIconFont);
+
+  /// Assets for readReadIconMore
+  /// read/read_icon_more
+  static  AssetImage get readReadIconMore =>  AssetImage(Assets.readReadIconMore);
+
+  /// Assets for readReadIconSetting
+  /// read/read_icon_setting
+  static  AssetImage get readReadIconSetting =>  AssetImage(Assets.readReadIconSetting);
+
+  /// Assets for readReadIconVip
+  /// read/read_icon_vip
+  static  AssetImage get readReadIconVip =>  AssetImage(Assets.readReadIconVip);
+
+  /// Assets for readReadIconVoice
+  /// read/read_icon_voice
+  static  AssetImage get readReadIconVoice =>  AssetImage(Assets.readReadIconVoice);
+
+  /// Assets for readReadMoreDetail
+  /// read/read_more_detail
+  static  AssetImage get readReadMoreDetail =>  AssetImage(Assets.readReadMoreDetail);
+
+  /// Assets for readReaderBattery
+  /// read/reader_battery
+  static  AssetImage get readReaderBattery =>  AssetImage(Assets.readReaderBattery);
+
   /// Assets for tabIcBookcase
   /// tab/ic_bookcase
   static  AssetImage get tabIcBookcase =>  AssetImage(Assets.tabIcBookcase);

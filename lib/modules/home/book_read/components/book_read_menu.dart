@@ -1,3 +1,4 @@
+import 'package:corrode/constants/flutter_assets.dart';
 import 'package:corrode/theme/colors.dart';
 import 'package:corrode/util/util.dart';
 import 'package:corrode/models/chapter.dart';
@@ -90,17 +91,17 @@ class _BookReaderMenuState extends State<BookReadMenu>
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Image.asset('assets/images/read/pub_back_gray.png'),
+                child: Image(image: AssetImages.readPubBackGray),
               ),
             ),
             Expanded(child: Container()),
             Container(
               width: 44,
-              child: Image.asset('assets/images/read/read_icon_voice.png'),
+              child: Image(image: AssetImages.readReadIconVoice),
             ),
             Container(
               width: 44,
-              child: Image.asset('assets/images/read/read_icon_more.png'),
+              child: Image(image: AssetImages.readReadIconMore),
             ),
           ],
         ),
@@ -166,8 +167,7 @@ class _BookReaderMenuState extends State<BookReadMenu>
             onTap: previousArticle,
             child: Container(
               padding: EdgeInsets.all(20),
-              child: Image.asset(
-                  'assets/images/read/read_icon_chapter_previous.png'),
+              child: Image(image: AssetImages.readReadIconChapterPrevious),
             ),
           ),
           Expanded(
@@ -191,8 +191,7 @@ class _BookReaderMenuState extends State<BookReadMenu>
             onTap: nextArticle,
             child: Container(
               padding: EdgeInsets.all(20),
-              child:
-                  Image.asset('assets/images/read/read_icon_chapter_next.png'),
+              child: Image(image: AssetImages.readReadIconChapterNext),
             ),
           )
         ],
@@ -229,10 +228,10 @@ class _BookReaderMenuState extends State<BookReadMenu>
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        buildBottomItem('目录', 'assets/images/read/read_icon_catalog.png'),
-        buildBottomItem('亮度', 'assets/images/read/read_icon_brightness.png'),
-        buildBottomItem('字体', 'assets/images/read/read_icon_font.png'),
-        buildBottomItem('设置', 'assets/images/read/read_icon_setting.png'),
+        buildBottomItem('目录', Assets.readReadIconCatalog),
+        buildBottomItem('亮度', Assets.readReadIconBrightness),
+        buildBottomItem('字体', Assets.readReadIconFont),
+        buildBottomItem('设置', Assets.readReadIconSetting),
       ],
     );
   }

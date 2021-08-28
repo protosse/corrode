@@ -91,6 +91,9 @@ class BookReadPage extends StatelessWidget {
     }
 
     return GestureDetector(
+      onTapUp: (TapUpDetails details) {
+        controller.tap(details.globalPosition);
+      },
       child: BookReaderView(
           article: article,
           page: page,
