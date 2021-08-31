@@ -15,4 +15,5 @@ class Colours {
 
   static const Color divider = Color(0xffe5e5e5);
   static const Color back = Color(0xFFF5F5F5);
+  static const Color golden = Color(0xff8B7961);
 }
