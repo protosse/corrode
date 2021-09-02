@@ -60,9 +60,9 @@ class BookReadController extends FullLifeCycleController {
 
   setup() async {
     pageController.addListener(onScroll);
-    await SystemChrome.setEnabledSystemUIOverlays([]);
-    await Future.delayed(const Duration(milliseconds: 100), () {});
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    // await SystemChrome.setEnabledSystemUIOverlays([]);
+    // await Future.delayed(const Duration(milliseconds: 100), () {});
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     topSafeHeight = Screen.topSafeHeight;
 
     await fetchChapters();
@@ -169,7 +169,7 @@ class BookReadController extends FullLifeCycleController {
   }
 
   hideMenu() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    // SystemChrome.setEnabledSystemUIOverlays([]);
     this.isMenuVisible = false;
     update();
   }

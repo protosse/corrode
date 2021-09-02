@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../models/article.dart';
 import '../../../../util/screen.dart';
 import '../book_read_utils.dart';
+import 'book_read_overlayer.dart';
 
 class BookReaderView extends StatelessWidget {
   final Article article;
@@ -16,6 +17,8 @@ class BookReaderView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
+        ReaderOverlayer(
+            article: article, page: page, topSafeHeight: topSafeHeight),
         buildContent(article, page),
       ],
     );
@@ -29,7 +32,10 @@ class BookReaderView extends StatelessWidget {
     }
     return Container(
       color: Colors.transparent,
-      margin: EdgeInsets.fromLTRB(15, topSafeHeight + BookReadUtils.share.topOffset, 10,
+      margin: EdgeInsets.fromLTRB(
+          15,
+          topSafeHeight + BookReadUtils.share.topOffset,
+          10,
           Screen.bottomSafeHeight + BookReadUtils.share.bottomOffset),
       child: Text.rich(
         TextSpan(children: [

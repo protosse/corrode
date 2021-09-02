@@ -18,8 +18,9 @@ class BookReadPage extends StatelessWidget {
     Get.put(BookReadController(param: rm.param), tag: rm.tag);
     return FocusDetector(
       onFocusLost: () {
-        SystemChrome.setEnabledSystemUIOverlays(
-            [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+        // SystemChrome暂时好像都没用
+        // SystemChrome.setEnabledSystemUIOverlays(
+        //     [SystemUiOverlay.top, SystemUiOverlay.bottom]);
       },
       child: GetBuilder<BookReadController>(
         tag: rm.tag,
